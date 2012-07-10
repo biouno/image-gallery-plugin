@@ -1,0 +1,7 @@
+<!--
+  This view is used to render the installed plugins page.
+-->
+<div>
+  This plugin creates an image gallery from image files found in the job 
+  workspace.
+</div>
