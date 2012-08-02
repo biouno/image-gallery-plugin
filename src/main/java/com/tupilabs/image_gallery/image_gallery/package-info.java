@@ -21,18 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.tupilabs.image_gallery.image_gallery;
-
-
-import hudson.model.Descriptor;
-
 /**
- * Descriptor for {@link ImageGallery ImageGallery}.
- *
+ * Image galleries.
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
- * @see ImageGallery
  * @since 0.1
  */
-public abstract class ImageGalleryDescriptor extends Descriptor<ImageGallery> {
-
-}
+package com.tupilabs.image_gallery.image_gallery;

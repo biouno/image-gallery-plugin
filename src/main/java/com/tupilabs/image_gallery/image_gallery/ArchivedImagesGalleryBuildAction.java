@@ -28,7 +28,8 @@ import hudson.model.Action;
 import java.io.Serializable;
 
 /**
- * A project action with the list of image file names to be displayed.
+ * A project action with the list of archived image file names 
+ * to be displayed.
  *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
@@ -37,10 +38,25 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 
 	private static final long serialVersionUID = -5987342090954152424L;
 	
+	/**
+	 * The title.
+	 */
 	private final String title;
+	/**
+	 * The array of images.
+	 */
 	private final String[] images;
+	/**
+	 * The image width.
+	 */
 	private final int imageWidth;
 	
+	/**
+	 * Constructor with args.
+	 * @param title
+	 * @param images
+	 * @param imageWidth
+	 */
 	public ArchivedImagesGalleryBuildAction(String title, String[] images, Integer imageWidth) {
 		this.title = title;
 		this.images = images;

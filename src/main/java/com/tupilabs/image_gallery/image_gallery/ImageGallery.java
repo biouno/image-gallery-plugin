@@ -39,7 +39,9 @@ import java.util.Collection;
 
 
 /**
- * Image gallery marker interface.
+ * Image gallery extension point. Multiple image gallery types 
+ * extend this class.  
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */

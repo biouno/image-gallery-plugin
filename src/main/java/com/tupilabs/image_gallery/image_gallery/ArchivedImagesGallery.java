@@ -38,16 +38,22 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
- * An image gallery of archived artifacts.
+ * An image gallery of archived artifacts. Its descriptor is a static inner 
+ * class.
+ *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
 public class ArchivedImagesGallery extends ImageGallery {
 
+	private static Logger LOGGER = Logger.getLogger("com.tupilabs.image_gallery");
+	
 	private static final long serialVersionUID = -1981209232197421074L;
 
 	/**
@@ -118,7 +124,7 @@ public class ArchivedImagesGallery extends ImageGallery {
 		 */
 		@Override
 		public String getDisplayName() {
-			return "Archived images gallery.";
+			return "Archived images gallery";
 		}
 	}
 
@@ -127,11 +133,14 @@ public class ArchivedImagesGallery extends ImageGallery {
 	 */
 	@Override
 	public boolean createImageGallery(AbstractBuild<?, ?> build, BuildListener listener) throws InterruptedException, IOException {
-		listener.getLogger().append("Creating image gallery.");
+		listener.getLogger().append("Creating archived images gallery.");
 		if(build.getHasArtifacts()) {
 			File artifactsDir = build.getArtifactsDir();
 			FilePath artifactsPath = new FilePath(artifactsDir);
 			FilePath[] foundFiles = artifactsPath.list(includes);
+			if(LOGGER.isLoggable(Level.FINE)) {
+				LOGGER.log(Level.FINE, "Found " + (foundFiles != null ? foundFiles.length : 0) + " files.");
+			}
 			if(foundFiles != null && foundFiles.length > 0) {
 				List<String> images = new ArrayList<String>();
 				for(FilePath foundFile : foundFiles) {
@@ -172,6 +181,9 @@ public class ArchivedImagesGallery extends ImageGallery {
 			List<String> images = new ArrayList<String>();
 			try {
 				FilePath[] foundFiles = artifactsPath.list(includes);
+				if(LOGGER.isLoggable(Level.FINE)) {
+					LOGGER.log(Level.FINE, "Found " + (foundFiles != null ? foundFiles.length : 0) + " files.");
+				}
 				if(foundFiles != null && foundFiles.length > 0) {
 					for(FilePath foundFile : foundFiles) {
 						String fileName = "";
@@ -190,9 +202,9 @@ public class ArchivedImagesGallery extends ImageGallery {
 				ArchivedImagesGalleryProjectAction action = new ArchivedImagesGalleryProjectAction(this.title, images.toArray(new String[0]), this.imageWidth);
 				return Arrays.asList(action);
 			} catch(IOException ioe) {
-				ioe.printStackTrace(); //TODO: log
+				LOGGER.log(Level.WARNING, ioe.getMessage());
 			} catch(InterruptedException ie) {
-				ie.printStackTrace(); //TODO: log
+				LOGGER.log(Level.WARNING, ie.getMessage());
 			}
 			return Collections.emptyList();
 		} else {

@@ -41,6 +41,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
@@ -49,13 +51,18 @@ import org.kohsuke.stapler.QueryParameter;
 import com.tupilabs.image_gallery.image_gallery.ImageGallery;
 
 /**
- * An image gallery recorder. This recorder is responsible for looking for 
- * image files and storing them in the master node.
+ * An image gallery recorder. 
+ * <p> 
+ * It uses {@link ImageGallery ImageGallery} extension point to create 
+ * galleries for different formats.
  *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
+ * @see ImageGallery
  * @since 0.1
  */
 public class ImageGalleryRecorder extends Recorder {
+	
+	private static Logger LOGGER = Logger.getLogger("com.tupilabs.image_gallery");
 
 	@Extension
 	public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
@@ -95,6 +102,9 @@ public class ImageGalleryRecorder extends Recorder {
 		Collection<Action> actions = new ArrayList<Action>();
 		if(this.imageGalleries != null) {
 			for(ImageGallery imageGallery : this.imageGalleries) {
+				if(LOGGER.isLoggable(Level.FINE)) {
+					LOGGER.log(Level.FINE, "Add project actions for image gallery: " + imageGallery.getDescriptor().getDisplayName());
+				}
 				@SuppressWarnings("unchecked")
 				Collection<Action> imageGalleryActions = (Collection<Action>) imageGallery.getProjectActions(project);
 				for(Action imageGalleryAction : imageGalleryActions) {
@@ -115,6 +125,9 @@ public class ImageGalleryRecorder extends Recorder {
 		boolean r = true;
 		for(ImageGallery imageGallery : this.imageGalleries) {
 			try {
+				if(LOGGER.isLoggable(Level.FINE)) {
+					LOGGER.log(Level.FINE, "Creating image gallery: " + imageGallery.getDescriptor().getDisplayName());
+				}
 				imageGallery.createImageGallery(build, listener);
 			} catch (IOException ioe) {
 				r = false;
