@@ -12,4 +12,4 @@ images in [BioUno](http://www.biouno.org "BioUno"), a project that uses Jenkins
 for running BioInformatics tools and managing clusters.
 
 For more about this plug-in check its 
-[Wiki](https://wiki.jenkins-ci.org/display/JENKINS/R+Plugin "Jenkins Image Gallery Plug-in Wiki").
+[Wiki](https://wiki.jenkins-ci.org/display/JENKINS/Image+Gallery+Plugin "Jenkins Image Gallery Plug-in Wiki").
