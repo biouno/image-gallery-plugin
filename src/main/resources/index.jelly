@@ -1,7 +1,6 @@
 <!--
   This view is used to render the installed plugins page.
 -->
-<div>
-  This plugin creates an image gallery from image files found in the job 
-  workspace.
-</div>
+<div>This plug-in reads a job workspace and collects images to produce an image 
+gallery using <a href="http://www.jacklmoore.com/colorbox" title="Colorbox">
+colorbox</a> lightbox Javascript library.</div>

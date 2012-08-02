@@ -25,18 +25,13 @@ package com.tupilabs.image_gallery.image_gallery;
 
 import hudson.Extension;
 import hudson.FilePath;
-import hudson.model.Action;
 import hudson.model.BuildListener;
 import hudson.model.Result;
 import hudson.model.AbstractBuild;
-import hudson.model.AbstractProject;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -167,49 +162,6 @@ public class ArchivedImagesGallery extends ImageGallery {
 			listener.getLogger().append("This build has no artifacts. Skipping image gallery in this build.");
 		}
 		return true;
-	}
-	
-	/* (non-Javadoc)
-	 * @see com.tupilabs.image_gallery.image_gallery.ImageGallery#getProjectActions(hudson.model.AbstractProject)
-	 */
-	@Override
-	public Collection<? extends Action> getProjectActions(AbstractProject<?, ?> project) {
-		AbstractBuild<?, ?> build = project.getLastBuild();
-		if(build != null) {
-			File artifactsDir = build.getArtifactsDir();
-			FilePath artifactsPath = new FilePath(artifactsDir);
-			List<String> images = new ArrayList<String>();
-			try {
-				FilePath[] foundFiles = artifactsPath.list(includes);
-				if(LOGGER.isLoggable(Level.FINE)) {
-					LOGGER.log(Level.FINE, "Found " + (foundFiles != null ? foundFiles.length : 0) + " files.");
-				}
-				if(foundFiles != null && foundFiles.length > 0) {
-					for(FilePath foundFile : foundFiles) {
-						String fileName = "";
-						FilePath temp = foundFile;
-						while(!temp.getParent().equals(artifactsPath)) {
-							fileName = foundFile.getParent().getName() + "/" + fileName;
-							temp = temp.getParent();
-						}
-						if(fileName.length() > 0) {
-							fileName += "/";
-						}
-						fileName += foundFile.getName();
-						images.add("" + build.getNumber() + "/artifact/" + fileName);
-					}
-				}
-				ArchivedImagesGalleryProjectAction action = new ArchivedImagesGalleryProjectAction(this.title, images.toArray(new String[0]), this.imageWidth);
-				return Arrays.asList(action);
-			} catch(IOException ioe) {
-				LOGGER.log(Level.WARNING, ioe.getMessage());
-			} catch(InterruptedException ie) {
-				LOGGER.log(Level.WARNING, ie.getMessage());
-			}
-			return Collections.emptyList();
-		} else {
-			return Collections.emptyList();
-		}
 	}
 	
 }

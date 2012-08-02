@@ -3,7 +3,7 @@
   <f:entry title="Gallery title" field="title" help="${rootURL}/../plugin/image-gallery/help-title.html">
     <f:textbox />
   </f:entry>
-  <f:entry title="Include pattern" field="includes">
+  <f:entry title="Include pattern" field="includes" help="${rootURL}/../descriptor/hudson.tasks.ArtifactArchiver/help/artifacts">
     <f:textbox checkUrl="'${rootURL}/publisher/ImageGalleryRecorder/checkMandatory?value='+escape(this.value)" />
   </f:entry>
   <f:advanced>

@@ -25,7 +25,6 @@ package com.tupilabs.image_gallery;
 
 import hudson.Extension;
 import hudson.Launcher;
-import hudson.model.Action;
 import hudson.model.BuildListener;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
@@ -37,8 +36,6 @@ import hudson.tasks.Recorder;
 import hudson.util.FormValidation;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -92,27 +89,6 @@ public class ImageGalleryRecorder extends Recorder {
 	 */
 	public BuildStepMonitor getRequiredMonitorService() {
 		return BuildStepMonitor.NONE;
-	}
-	
-	/* (non-Javadoc)
-	 * @see hudson.tasks.BuildStepCompatibilityLayer#getProjectActions(hudson.model.AbstractProject)
-	 */
-	@Override
-	public Collection<? extends Action> getProjectActions(AbstractProject<?, ?> project) {
-		Collection<Action> actions = new ArrayList<Action>();
-		if(this.imageGalleries != null) {
-			for(ImageGallery imageGallery : this.imageGalleries) {
-				if(LOGGER.isLoggable(Level.FINE)) {
-					LOGGER.log(Level.FINE, "Add project actions for image gallery: " + imageGallery.getDescriptor().getDisplayName());
-				}
-				@SuppressWarnings("unchecked")
-				Collection<Action> imageGalleryActions = (Collection<Action>) imageGallery.getProjectActions(project);
-				for(Action imageGalleryAction : imageGalleryActions) {
-					actions.add(imageGalleryAction);
-				}
-			}
-		}
-		return actions;
 	}
 	
 	/* (non-Javadoc)
