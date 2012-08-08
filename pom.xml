@@ -13,7 +13,7 @@
   
   <name>Image Gallery Plug-in</name>
   <!-- url></url -->
-  <description>A plug-in to create image galleries from image files within your workspace</description>
+  <description>A plug-in to create image galleries from image, video or sound files in your workspace</description>
   
   <developers>
     <developer>
@@ -197,4 +197,9 @@
     </pluginManagement>
   </build>
   
+  <scm>
+  	<url>http://github.com/jenkinsci/image-gallery-plugin</url>
+  	<connection>scm:git:git://github.com/jenkinsci/image-gallery-plugin.git</connection>
+  	<developerConnection>scm:git:git@github.com:jenkinsci/image-gallery-plugin.git</developerConnection>
+  </scm>
 </project>
