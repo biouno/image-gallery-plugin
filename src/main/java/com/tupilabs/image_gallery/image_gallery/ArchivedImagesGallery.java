@@ -142,7 +142,7 @@ public class ArchivedImagesGallery extends ImageGallery {
 					String fileName = "";
 					FilePath temp = foundFile;
 					while(!temp.getParent().equals(artifactsPath)) {
-						fileName = foundFile.getParent().getName() + "/" + fileName;
+						fileName = temp.getParent().getName() + "/" + fileName;
 						temp = temp.getParent();
 					}
 					if(fileName.length() > 0) {
