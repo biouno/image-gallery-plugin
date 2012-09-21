@@ -80,7 +80,6 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
 
             if (files != null && files.length > 0) {
             	FilePairTree tree = new FilePairTree();
-                //Map<String, Set<FilePair>> pairs = new TreeMap<String, Set<FilePair>>();
                 for (FilePath path : files) {
                         List<String> folder = getRelativeFrom(path.getParent(), artifactsPath);
                         List<String> artifactsRelativeFile = getRelativeFrom(path, artifactsPath.getParent());

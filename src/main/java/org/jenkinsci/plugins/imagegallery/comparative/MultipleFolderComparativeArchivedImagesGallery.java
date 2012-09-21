@@ -83,7 +83,6 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 				LOGGER.log(Level.FINE, "Found " + (baseFolders != null ? baseFolders.size() : 0) + " files.");
 			}
 			if(baseFolders != null && baseFolders.size() > 0) {
-				//Map<String, Set<FilePair>> pairs = new TreeMap<String, Set<FilePair>>();
 				FilePairTree tree = new FilePairTree();
 				for (FilePath folder : baseFolders) {
 					FilePath[] files = folder.list("**");

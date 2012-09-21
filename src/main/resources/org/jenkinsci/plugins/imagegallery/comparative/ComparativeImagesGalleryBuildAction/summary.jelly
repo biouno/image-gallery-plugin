@@ -18,27 +18,25 @@
           });
       });
 
-        jQuery(".comparative-gallery-tree").jstree({
-            "plugins" : [ "themes", "html_data" ]
-        }).find('.leaf').css('height', ${from.imageWidth} + 5);
+        var tree = jQuery(".comparative-gallery-tree").jstree({
+            "plugins" : [ "themes", "html_data" ]  ,
+            core : {
+                "animation" : 0
+            }
+        });
+        tree.find('.leaf').css('height', ${from.imageWidth} + 10);
 
 
         });
     </script>
     <style type="text/css">
-        .infolder-box {
-            float:left;
-            margin: 5px;
-            padding: 5px;
-            border-style: dashed;
-            border-width: 1px;
+        .comparative-gallery-tree .jstree-icon {
+            vertical-align:top;
         }
-        .infolder-box span {
-            font-weight: 700;
-            display:block;
-        }
-        .infolder-box a {
-
+        a.leaf {
+            border : dashed 1px;
+            margin-top: 4px;
+            margin-bottom: 4px;
         }
     </style>
     <link href="${rootURL}/plugin/image-gallery/css/colorbox.css" type="text/css" rel="stylesheet" />

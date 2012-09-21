@@ -8,15 +8,17 @@
                     <st:include page="filetree.jelly" it="${node.value}" from="${from}"/>
                 </ul>
             </j:if>
-            <ul>
-                <li>
-                    <a href="test" class="leaf">
-                    <j:forEach items="${node.value.leafs}" var="img" varStatus="st">
-                        <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidth}" />
-                    </j:forEach>
-                    </a>
-                </li>
-            </ul>
+            <j:if test="${node.value.leafs.size() != 0}">
+                <ul>
+                    <li>
+                        <a href="test" class="leaf">
+                        <j:forEach items="${node.value.leafs}" var="img" varStatus="st">
+                            <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidth}" />
+                        </j:forEach>
+                        </a>
+                    </li>
+                </ul>
+            </j:if>
         </li>
         <!--
         <div class="infolder-leaf">
