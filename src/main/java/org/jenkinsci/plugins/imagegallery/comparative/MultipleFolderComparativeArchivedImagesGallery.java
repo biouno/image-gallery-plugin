@@ -35,6 +35,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
@@ -87,9 +88,9 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 				for (FilePath folder : baseFolders) {
 					FilePath[] files = folder.list("**");
 					for (FilePath path : files) {
-						String fileName = getRelativeFrom(path, folder);
-                        String artifactsRelativeFile = getRelativeFrom(path, artifactsPath.getParent());
-						tree.addToBranch(fileName, new FilePair(folder.getName(), artifactsRelativeFile));
+						List<String> filepath = getRelativeFrom(path, folder);
+                        List<String> artifactsRelativeFile = getRelativeFrom(path, artifactsPath.getParent());
+						tree.addToBranch(filepath, new FilePair(folder.getName(), StringUtils.join(artifactsRelativeFile, '/')));
 					}
 				}
 				

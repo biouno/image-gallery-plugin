@@ -26,6 +26,9 @@ package org.jenkinsci.plugins.imagegallery.comparative;
 import hudson.FilePath;
 import hudson.util.FormValidation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
@@ -132,18 +135,15 @@ public abstract class ComparativeArchivedImagesGallery extends ImageGallery {
 
 	}
 
-	protected String getRelativeFrom(FilePath file, FilePath parent) {
-		String fileName = "";
+	protected List<String> getRelativeFrom(FilePath file, FilePath parent) {
+		List<String> path = new ArrayList<String>();
 		FilePath temp = file;
 		while(!temp.getParent().equals(parent)) {
-			fileName = temp.getParent().getName() + "/" + fileName;
+			path.add(0,temp.getParent().getName());
 			temp = temp.getParent();
 		}
-		if(fileName.length() > 0) {
-			fileName += "/";
-		}
-		fileName += file.getName();
-		return fileName;
+		path.add(file.getName());
+		return path;
 	}
 	
 	

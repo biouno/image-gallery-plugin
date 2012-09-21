@@ -1,10 +1,11 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt" xmlns:local="local">
     <script type="text/javascript" src="${rootURL}/plugin/image-gallery/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="${rootURL}/plugin/image-gallery/js/jquery.colorbox.js"></script>
+    <script type="text/javascript" src="${rootURL}/plugin/image-gallery/js/jquery.jstree.js"></script>
     <script type="text/javascript">
     jQuery.noConflict();
     jQuery(document).ready(function(){
-      jQuery("a.gallery").each(function(idx, el) {
+      jQuery("a.leaf").each(function(idx, el) {
         var html = jQuery(el).clone().find('img').attr("width", ${from.imageInnerWidth}).end().html();
 
           jQuery(el).colorbox({
@@ -16,12 +17,15 @@
               html: '<div style="overflow: auto; float: left;">' + html + "</div>"
           });
       });
-    });
+
+        jQuery(".comparative-gallery-tree").jstree({
+            "plugins" : [ "themes", "html_data" ]
+        }).find('.leaf').css('height', ${from.imageWidth} + 5);
+
+
+        });
     </script>
     <style type="text/css">
-        .comparative-gallery-box {
-            overflow:auto;
-        }
         .infolder-box {
             float:left;
             margin: 5px;
@@ -39,26 +43,10 @@
     </style>
     <link href="${rootURL}/plugin/image-gallery/css/colorbox.css" type="text/css" rel="stylesheet" />
     <link href="${rootURL}/plugin/image-gallery/css/plugin.css" type="text/css" rel="stylesheet" />
-    <h2>${from.title}</h2>
-    <div class="comparative-gallery-box">
-    <j:forEach items="${from.images}" var="i" varStatus="st">
-    	<div class="infolder-box">
-          <span>Compared images : ${i.key}</span>
-          <a class='gallery' rel="${i.key}" href="artifact/${img.name}" title="${img.name}">
-          <j:choose>
-            <j:when test="${from.imageWidth > 0}">
-               <j:forEach items="${i.value}" var="img">
-	              <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidth}" />
-               </j:forEach>
-            </j:when>
-            <j:otherwise>
-              <j:forEach items="${i.value}" var="img">
-		        <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" />
-              </j:forEach>
-            </j:otherwise>
-          </j:choose>
-          </a>
-        </div>
-    </j:forEach>
+    <h3>${from.title}</h3>
+    <div class="comparative-gallery-tree">
+        <ul>
+        <st:include page="filetree.jelly" it="${from.images}" from="${from}"/>
+        </ul>
     </div>
 </j:jelly>

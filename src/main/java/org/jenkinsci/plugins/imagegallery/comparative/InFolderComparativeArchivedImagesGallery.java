@@ -31,8 +31,9 @@ import hudson.model.AbstractBuild;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Logger;
+import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
@@ -81,10 +82,9 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
             	FilePairTree tree = new FilePairTree();
                 //Map<String, Set<FilePair>> pairs = new TreeMap<String, Set<FilePair>>();
                 for (FilePath path : files) {
-                        String folder = getRelativeFrom(path.getParent(), artifactsPath);
-                        String artifactsRelativeFile = getRelativeFrom(path, artifactsPath.getParent());
-                        //
-                        tree.addToBranch(folder, new FilePair(path.getName(), artifactsRelativeFile));
+                        List<String> folder = getRelativeFrom(path.getParent(), artifactsPath);
+                        List<String> artifactsRelativeFile = getRelativeFrom(path, artifactsPath.getParent());
+                        tree.addToBranch(folder, new FilePair(path.getName(), StringUtils.join(artifactsRelativeFile, '/')));
                 }
 
 				build.addAction(new ComparativeImagesGalleryBuildAction(getTitle(), tree, getImageWidth(), getImageInnerWidth()));
