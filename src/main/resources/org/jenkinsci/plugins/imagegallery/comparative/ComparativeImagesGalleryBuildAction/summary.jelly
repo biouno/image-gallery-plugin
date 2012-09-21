@@ -29,16 +29,6 @@
 
         });
     </script>
-    <style type="text/css">
-        .comparative-gallery-tree .jstree-icon {
-            vertical-align:top;
-        }
-        a.leaf {
-            border : dashed 1px;
-            margin-top: 4px;
-            margin-bottom: 4px;
-        }
-    </style>
     <link href="${rootURL}/plugin/image-gallery/css/colorbox.css" type="text/css" rel="stylesheet" />
     <link href="${rootURL}/plugin/image-gallery/css/plugin.css" type="text/css" rel="stylesheet" />
     <h3>${from.title}</h3>
