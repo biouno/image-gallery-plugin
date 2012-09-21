@@ -21,14 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.tupilabs.image_gallery;
+package org.jenkinsci.plugins.imagegallery;
 
 import hudson.Extension;
 import hudson.Launcher;
+import hudson.init.InitMilestone;
+import hudson.init.Initializer;
 import hudson.model.BuildListener;
+import hudson.model.Items;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.model.Descriptor;
+import hudson.model.Run;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.BuildStepMonitor;
 import hudson.tasks.Publisher;
@@ -42,10 +46,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
+import org.jenkinsci.plugins.imagegallery.imagegallery.ArchivedImagesGallery;
+import org.jenkinsci.plugins.imagegallery.imagegallery.ArchivedImagesGalleryBuildAction;
+import org.jenkinsci.plugins.imagegallery.imagegallery.ImageGallery;
+import org.jenkinsci.plugins.imagegallery.imagegallery.ImageGalleryDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 
-import com.tupilabs.image_gallery.image_gallery.ImageGallery;
 
 /**
  * An image gallery recorder. 
@@ -168,6 +175,15 @@ public class ImageGalleryRecorder extends Recorder {
 				returnValue = FormValidation.error("This option is required");
 			}
 			return returnValue;
+		}
+		
+		@Initializer(before=InitMilestone.PLUGINS_STARTED)
+		public static void addAliases() {
+			Items.XSTREAM2.addCompatibilityAlias("com.tupilabs.image_gallery.ImageGalleryRecorder", ImageGalleryRecorder.class);
+			Items.XSTREAM2.addCompatibilityAlias("com.tupilabs.image_gallery.image_gallery.ArchivedImagesGallery", ArchivedImagesGallery.class);
+			Run.XSTREAM2.addCompatibilityAlias("com.tupilabs.image_gallery.image_gallery.ArchivedImagesGalleryBuildAction", ArchivedImagesGalleryBuildAction.class);
+			Items.XSTREAM2.addCompatibilityAlias("com.tupilabs.image_gallery.image_gallery.ImageGallery", ImageGallery.class);
+			Items.XSTREAM2.addCompatibilityAlias("com.tupilabs.image_gallery.image_gallery.ImageGalleryDescriptor", ImageGalleryDescriptor.class);
 		}
 		
 	}

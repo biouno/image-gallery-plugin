@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.tupilabs.image_gallery.image_gallery;
+package org.jenkinsci.plugins.imagegallery.imagegallery;
 
 import hudson.model.Action;
 
