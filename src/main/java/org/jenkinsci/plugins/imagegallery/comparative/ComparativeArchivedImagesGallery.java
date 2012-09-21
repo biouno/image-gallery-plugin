@@ -29,13 +29,13 @@ import hudson.util.FormValidation;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jenkinsci.plugins.imagegallery.imagegallery.ImageGallery;
+import org.jenkinsci.plugins.imagegallery.imagegallery.ImageGalleryDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
 
-import com.tupilabs.image_gallery.image_gallery.ImageGallery;
-import com.tupilabs.image_gallery.image_gallery.ImageGalleryDescriptor;
 
 /**
  * Base image gallery to compare images in different way.
