@@ -1,0 +1,20 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:f="/lib/form">
+  <f:entry title="Gallery title" field="title" help="${rootURL}/../plugin/image-gallery/help-title.html">
+    <f:textbox />
+  </f:entry>
+  <f:entry title="Base root dir" field="baseRootFolder" help="${rootURL}/../descriptor/hudson.tasks.ArtifactArchiver/help/artifacts">
+    <f:textbox checkUrl="'${rootURL}/publisher/ImageGalleryRecorder/checkMandatory?value='+escape(this.value)" />
+  </f:entry>
+    <f:entry title="Image width" field="imageWidth" help="${rootURL}/../plugin/image-gallery/help-imageWidth.html">
+        <f:textbox />
+    </f:entry>
+    <f:entry title="Image inner width" field="imageInnerWidth">
+        <f:textbox />
+    </f:entry>
+    <f:advanced>
+    <f:entry title="${%Mark build as unstable if no archived artifacts were found}" help="${rootURL}/../plugin/image-gallery/help-markBuildAsUnstableIfNoArchivesFound.html">
+      <f:checkbox name="ImageGalleryRecorder.markBuildAsUnstableIfNoArchivesFound" value="${instance.markBuildAsUnstableIfNoArchivesFound}" checked="${instance.markBuildAsUnstableIfNoArchivesFound}" />
+    </f:entry>
+  </f:advanced>
+</j:jelly>
