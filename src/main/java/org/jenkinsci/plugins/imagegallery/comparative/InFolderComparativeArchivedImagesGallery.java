@@ -25,6 +25,7 @@ package org.jenkinsci.plugins.imagegallery.comparative;
 
 import hudson.Extension;
 import hudson.FilePath;
+import hudson.Util;
 import hudson.model.BuildListener;
 import hudson.model.Result;
 import hudson.model.AbstractBuild;
@@ -85,8 +86,8 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
                         List<String> artifactsRelativeFile = getRelativeFrom(path, artifactsPath.getParent());
                         tree.addToBranch(folder, new FilePair(path.getName(), StringUtils.join(artifactsRelativeFile, '/')));
                 }
-
-				build.addAction(new ComparativeImagesGalleryBuildAction(getTitle(), tree, getImageWidth(), getImageInnerWidth()));
+                String title = Util.replaceMacro(build.getEnvironment(listener).expand(getTitle()), build.getBuildVariableResolver());
+				build.addAction(new ComparativeImagesGalleryBuildAction(title, tree, getImageWidth(), getImageInnerWidth()));
 			} else {
 				listener.getLogger().append("No files found for image gallery.");
 			}

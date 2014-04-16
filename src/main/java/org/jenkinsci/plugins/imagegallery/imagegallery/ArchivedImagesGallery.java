@@ -25,6 +25,7 @@ package org.jenkinsci.plugins.imagegallery.imagegallery;
 
 import hudson.Extension;
 import hudson.FilePath;
+import hudson.Util;
 import hudson.model.BuildListener;
 import hudson.model.Result;
 import hudson.model.AbstractBuild;
@@ -151,7 +152,8 @@ public class ArchivedImagesGallery extends ImageGallery {
 					fileName += foundFile.getName();
 					images.add(fileName);
 				}
-				build.addAction(new ArchivedImagesGalleryBuildAction(this.title, images.toArray(new String[0]), imageWidth));
+				String title = Util.replaceMacro(build.getEnvironment(listener).expand(this.title), build.getBuildVariableResolver());
+				build.addAction(new ArchivedImagesGalleryBuildAction(title, images.toArray(new String[0]), imageWidth));
 			} else {
 				listener.getLogger().append("No files found for image gallery.");
 			}
