@@ -31,7 +31,7 @@ import java.io.Serializable;
  * A project action with a group of image files associated by a path and a set of files
  *
  * @author Richard Lavoie
- * @since 0.2
+ * @since 1.0
  */
 public class ComparativeImagesGalleryBuildAction implements Action, Serializable {
 

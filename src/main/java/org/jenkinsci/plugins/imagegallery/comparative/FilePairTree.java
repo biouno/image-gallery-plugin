@@ -30,6 +30,10 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+/**
+ * @author Richard Lavoie
+ * @since 1.0
+ */
 public class FilePairTree {
 	private Map<String, FilePairTree> nodes = new TreeMap<String, FilePairTree>();
 	

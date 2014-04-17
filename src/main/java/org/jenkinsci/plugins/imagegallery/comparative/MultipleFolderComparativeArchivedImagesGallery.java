@@ -43,7 +43,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
  * An image gallery of archived artifacts Comparing same files in different folders.
  *
  * @author Richard Lavoie
- * @since 0.2
+ * @since 1.0
  */
 public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeArchivedImagesGallery {
 
@@ -76,7 +76,7 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 	@Override
 	public boolean createImageGallery(AbstractBuild<?, ?> build, BuildListener listener) throws InterruptedException, IOException {
 		listener.getLogger().append("Creating archived images gallery.");
-		if(build.getHasArtifacts()) {
+		if (build.getHasArtifacts()) {
 			File artifactsDir = build.getArtifactsDir().getAbsoluteFile();
 			FilePath artifactsPath = new FilePath(new File(artifactsDir.getAbsoluteFile(), getBaseRootFolder()));
 			List<FilePath> baseFolders = artifactsPath.list();

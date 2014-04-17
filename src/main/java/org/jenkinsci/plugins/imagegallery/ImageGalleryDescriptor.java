@@ -21,9 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.jenkinsci.plugins.imagegallery.imagegallery;
+package org.jenkinsci.plugins.imagegallery;
 
 
+import hudson.init.InitMilestone;
+import hudson.init.Initializer;
+import hudson.model.Items;
 import hudson.model.Descriptor;
 
 /**
@@ -35,4 +38,11 @@ import hudson.model.Descriptor;
  */
 public abstract class ImageGalleryDescriptor extends Descriptor<ImageGallery> {
 
+	// Backward compatibility
+	@Initializer(before=InitMilestone.PLUGINS_STARTED)
+	public static void addAliases() {
+		Items.XSTREAM2.addCompatibilityAlias("org.jenkinsci.plugins.imagegallery.imagegallery.ImageGallery", ImageGallery.class);
+		Items.XSTREAM2.addCompatibilityAlias("org.jenkinsci.plugins.imagegallery.imagegallery.ImageGalleryDescriptor", ImageGalleryDescriptor.class);
+	}
+	
 }

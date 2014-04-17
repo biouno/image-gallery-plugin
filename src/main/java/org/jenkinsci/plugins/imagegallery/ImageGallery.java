@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.jenkinsci.plugins.imagegallery.imagegallery;
+package org.jenkinsci.plugins.imagegallery;
 
 import hudson.DescriptorExtensionList;
 import hudson.model.AbstractBuild;
@@ -39,15 +39,45 @@ import java.util.Collection;
 
 
 /**
- * Image gallery extension point. Multiple image gallery types 
- * extend this class.  
+ * Image gallery extension point. Multiple image gallery types extend this class.  
  *
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
 public abstract class ImageGallery implements Serializable, Describable<ImageGallery>, Comparable<ImageGallery> {
 
-	private static final long serialVersionUID = -1438998620198424163L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7290410166903500439L;
+	
+	/**
+	 * Title.
+	 */
+	private final String title;
+	/**
+	 * Images width.
+	 */
+	private final Integer imageWidth;
+	
+	public ImageGallery(String title, Integer imageWidth) {
+		this.title = title;
+		this.imageWidth = imageWidth;
+	}
+	
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	
+	/**
+	 * @return the imageWidth
+	 */
+	public Integer getImageWidth() {
+		return imageWidth;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)

@@ -37,6 +37,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.jenkinsci.plugins.imagegallery.AbstractArchivedImagesGallery;
+import org.jenkinsci.plugins.imagegallery.ImageGalleryDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
@@ -46,29 +48,17 @@ import org.kohsuke.stapler.DataBoundConstructor;
  * @author Bruno P. Kinoshita - http://www.kinoshita.eti.br
  * @since 0.1
  */
-public class ArchivedImagesGallery extends ImageGallery {
+public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
+
+	private static final long serialVersionUID = -9160740389012923833L;
 
 	private static Logger LOGGER = Logger.getLogger("com.tupilabs.image_gallery");
 	
-	private static final long serialVersionUID = -1981209232197421074L;
-
-	/**
-	 * Title.
-	 */
-	private final String title;
 	/**
 	 * Include pattern.
 	 */
 	private final String includes;
-	/**
-	 * Images width.
-	 */
-	private final Integer imageWidth;
-	/**
-	 * If checked, marks the build as unstable if no archives were found.
-	 */
-	private final boolean markBuildAsUnstableIfNoArchivesFound;
-	
+
 	/**
 	 * Constructor called from jelly.
 	 * @param includes
@@ -77,42 +67,11 @@ public class ArchivedImagesGallery extends ImageGallery {
 	 */
 	@DataBoundConstructor
 	public ArchivedImagesGallery(String title, String includes, Integer imageWidth,
-			boolean markBuildAsUnstableIfNoArchivesFound) {
-		super();
-		this.title = title;
+			Boolean markBuildAsUnstableIfNoArchivesFound) {
+		super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
 		this.includes = includes;
-		this.imageWidth = imageWidth;
-		this.markBuildAsUnstableIfNoArchivesFound = markBuildAsUnstableIfNoArchivesFound;
 	}
 	
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
-	
-	/**
-	 * @return the includes
-	 */
-	public String getIncludes() {
-		return includes;
-	}
-	
-	/**
-	 * @return the imageWidth
-	 */
-	public Integer getImageWidth() {
-		return imageWidth;
-	}
-	
-	/**
-	 * @return the markBuildAsUnstableIfNoArchivesFound
-	 */
-	public boolean isMarkBuildAsUnstableIfNoArchivesFound() {
-		return markBuildAsUnstableIfNoArchivesFound;
-	}
-
 	@Extension
 	public static class DescriptorImpl extends ImageGalleryDescriptor {
 		/* (non-Javadoc)
@@ -122,6 +81,13 @@ public class ArchivedImagesGallery extends ImageGallery {
 		public String getDisplayName() {
 			return "Archived images gallery";
 		}
+	}
+	
+	/**
+	 * @return the includes
+	 */
+	public String getIncludes() {
+		return includes;
 	}
 
 	/* (non-Javadoc)
@@ -133,7 +99,7 @@ public class ArchivedImagesGallery extends ImageGallery {
 		if(build.getHasArtifacts()) {
 			File artifactsDir = build.getArtifactsDir();
 			FilePath artifactsPath = new FilePath(artifactsDir);
-			FilePath[] foundFiles = artifactsPath.list(includes);
+			FilePath[] foundFiles = artifactsPath.list(getIncludes());
 			if(LOGGER.isLoggable(Level.FINE)) {
 				LOGGER.log(Level.FINE, "Found " + (foundFiles != null ? foundFiles.length : 0) + " files.");
 			}
@@ -152,13 +118,13 @@ public class ArchivedImagesGallery extends ImageGallery {
 					fileName += foundFile.getName();
 					images.add(fileName);
 				}
-				String title = Util.replaceMacro(build.getEnvironment(listener).expand(this.title), build.getBuildVariableResolver());
-				build.addAction(new ArchivedImagesGalleryBuildAction(title, images.toArray(new String[0]), imageWidth));
+				String title = Util.replaceMacro(build.getEnvironment(listener).expand(getTitle()), build.getBuildVariableResolver());
+				build.addAction(new ArchivedImagesGalleryBuildAction(title, images.toArray(new String[0]), getImageWidth()));
 			} else {
 				listener.getLogger().append("No files found for image gallery.");
 			}
 		} else {
-			if(markBuildAsUnstableIfNoArchivesFound) {
+			if(isMarkBuildAsUnstableIfNoArchivesFound()) {
 				build.setResult(Result.UNSTABLE);
 			}
 			listener.getLogger().append("This build has no artifacts. Skipping image gallery in this build.");

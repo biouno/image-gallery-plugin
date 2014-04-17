@@ -48,8 +48,6 @@ import java.util.logging.Logger;
 import org.apache.commons.lang.StringUtils;
 import org.jenkinsci.plugins.imagegallery.imagegallery.ArchivedImagesGallery;
 import org.jenkinsci.plugins.imagegallery.imagegallery.ArchivedImagesGalleryBuildAction;
-import org.jenkinsci.plugins.imagegallery.imagegallery.ImageGallery;
-import org.jenkinsci.plugins.imagegallery.imagegallery.ImageGalleryDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 

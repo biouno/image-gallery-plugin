@@ -28,7 +28,7 @@ package org.jenkinsci.plugins.imagegallery.comparative;
  * File association group for a path and a set of files
  * 
  * @author Richard Lavoie
- * @since 0.2
+ * @since 1.0
  */
 public class FilePair implements Comparable<FilePair> {
 

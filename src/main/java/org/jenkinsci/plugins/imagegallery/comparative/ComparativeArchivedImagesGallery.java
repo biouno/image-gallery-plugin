@@ -29,8 +29,8 @@ import hudson.util.FormValidation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jenkinsci.plugins.imagegallery.imagegallery.ImageGallery;
-import org.jenkinsci.plugins.imagegallery.imagegallery.ImageGalleryDescriptor;
+import org.jenkinsci.plugins.imagegallery.AbstractArchivedImagesGallery;
+import org.jenkinsci.plugins.imagegallery.ImageGalleryDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
@@ -41,15 +41,15 @@ import org.kohsuke.stapler.StaplerResponse;
  * Base image gallery to compare images in different way.
  *
  * @author Richard Lavoie
- * @since 0.1
+ * @since 1.0
  */
-public abstract class ComparativeArchivedImagesGallery extends ImageGallery {
+public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedImagesGallery {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5968271297983519264L;
-	
+	private static final long serialVersionUID = -1507776620685441240L;
+
 	/**
 	 * Title.
 	 */
@@ -61,35 +61,25 @@ public abstract class ComparativeArchivedImagesGallery extends ImageGallery {
 	private final String baseRootFolder;
 	
 	/**
-	 * Images width.
-	 */
-	private final Integer imageWidth;
-    
-	/**
      * Images width.
      */
     private final Integer imageInnerWidth;
 
 	/**
-	 * If checked, marks the build as unstable if no archives were found.
-	 */
-	private final boolean markBuildAsUnstableIfNoArchivesFound;
-
-	/**
 	 * Constructor called from jelly.
-	 * @param includes
+	 * @param title
+	 * @param baseRootFolder
 	 * @param imageWidth
+	 * @param imageInnerWidth
 	 * @param markBuildAsUnstableIfNoArchivesFound
 	 */
 	@DataBoundConstructor
 	public ComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {
-		super();
+		super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
 		this.title = title;
 		this.baseRootFolder = baseRootFolder;
-		this.imageWidth = imageWidth;
         this.imageInnerWidth = imageInnerWidth;
-		this.markBuildAsUnstableIfNoArchivesFound = markBuildAsUnstableIfNoArchivesFound;
 	}
 	
 	/**
@@ -105,13 +95,6 @@ public abstract class ComparativeArchivedImagesGallery extends ImageGallery {
 	public String getBaseRootFolder() {
 		return baseRootFolder;
 	}
-	
-	/**
-	 * @return the imageWidth
-	 */
-	public Integer getImageWidth() {
-		return imageWidth;
-	}
 
     /**
      * @return the imageInnerWidth
@@ -119,13 +102,6 @@ public abstract class ComparativeArchivedImagesGallery extends ImageGallery {
     public Integer getImageInnerWidth() {
         return imageInnerWidth;
     }
-
-    /**
-	 * @return the markBuildAsUnstableIfNoArchivesFound
-	 */
-	public boolean isMarkBuildAsUnstableIfNoArchivesFound() {
-		return markBuildAsUnstableIfNoArchivesFound;
-	}
 
 	public static abstract class ComparativeDescriptorImpl extends ImageGalleryDescriptor {
 
@@ -138,7 +114,7 @@ public abstract class ComparativeArchivedImagesGallery extends ImageGallery {
 	protected List<String> getRelativeFrom(FilePath file, FilePath parent) {
 		List<String> path = new ArrayList<String>();
 		FilePath temp = file;
-		while(!temp.getParent().equals(parent)) {
+		while(temp.getParent() != null && !temp.getParent().equals(parent)) {
 			path.add(0,temp.getParent().getName());
 			temp = temp.getParent();
 		}

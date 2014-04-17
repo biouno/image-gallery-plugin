@@ -41,7 +41,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
  * An image gallery of archived artifacts Comparing same files in different folders.
  *
  * @author Richard Lavoie
- * @since 0.2
+ * @since 1.0
  */
 public class InFolderComparativeArchivedImagesGallery extends ComparativeArchivedImagesGallery {
 
