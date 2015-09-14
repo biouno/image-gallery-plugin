@@ -27,6 +27,8 @@ import hudson.model.Action;
 
 import java.io.Serializable;
 
+import org.jenkinsci.plugins.imagegallery.comparative.ComparativeImagesGalleryBuildAction;
+
 /**
  * A project action with the list of archived image file names 
  * to be displayed.
@@ -52,7 +54,7 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	 * The image width.
 	 */
 	@Deprecated
-	private int imageWidth;
+	private Integer imageWidth;
 	/**
 	 * The image width.
 	 */
@@ -134,5 +136,14 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	public String getImageWidthText() {
 	    return imageWidthText;
 	}
+
+    public Object readResolve() {
+        String width = 
+                (imageWidth != null && imageWidth > 0) ? Integer.toString(imageWidth) : "0";
+        return new ArchivedImagesGalleryBuildAction(
+                title,
+                images,
+                width /*imageWidthText*/);
+    }
 
 }

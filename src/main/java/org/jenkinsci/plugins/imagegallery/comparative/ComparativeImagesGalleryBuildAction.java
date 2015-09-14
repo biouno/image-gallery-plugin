@@ -169,4 +169,17 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	public String getImageInnerWidthText() {
         return imageInnerWidthText;
     }
+
+	public Object readResolve() {
+	    String width = 
+	            (imageWidth != null && imageWidth > 0) ? Integer.toString(imageWidth) : "0";
+        String innerWidth = 
+                (imageInnerWidth != null && imageInnerWidth > 0) ? Integer.toString(imageInnerWidth) : "0";
+	    return new ComparativeImagesGalleryBuildAction(
+	            title,
+	            tree,
+	            width /*imageWidthText*/,
+	            innerWidth /*imageInnerWidthText*/);
+	}
+
 }

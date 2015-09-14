@@ -117,5 +117,24 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
 		}
 		return true;
 	}
-	
+
+	public Object readResolve() {
+	    Integer imageWidth = getImageWidth();
+	    String width = getImageWidthText();
+	    if (imageWidth != null && imageWidth > 0) {
+	        width = Integer.toString(imageWidth);
+	    }
+	    Integer imageInnerWidth = getImageInnerWidth();
+	    String innerWidth = getImageInnerWidthText();
+        if (imageInnerWidth != null && imageInnerWidth > 0) {
+            innerWidth = Integer.toString(imageInnerWidth);
+        }
+        return new InFolderComparativeArchivedImagesGallery(
+                getTitle(),
+                getBaseRootFolder(),
+                width,
+                innerWidth,
+                isMarkBuildAsUnstableIfNoArchivesFound());
+	}
+
 }

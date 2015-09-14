@@ -147,5 +147,17 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 		}
 		return true;
 	}
-	
+
+	public Object readResolve() {
+	    Integer imageWidth = getImageWidth();
+	    String width = getImageWidthText();
+	    if (imageWidth != null && imageWidth > 0) {
+	        width = Integer.toString(imageWidth);
+	    }
+	    return new ArchivedImagesGallery(getTitle(),
+	            getIncludes(),
+	            width,
+	            isMarkBuildAsUnstableIfNoArchivesFound());
+	}
+
 }

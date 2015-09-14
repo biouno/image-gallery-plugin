@@ -23,13 +23,6 @@
  */
 package org.jenkinsci.plugins.imagegallery.comparative;
 
-import hudson.Extension;
-import hudson.FilePath;
-import hudson.Util;
-import hudson.model.BuildListener;
-import hudson.model.Result;
-import hudson.model.AbstractBuild;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -38,6 +31,13 @@ import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
+
+import hudson.Extension;
+import hudson.FilePath;
+import hudson.Util;
+import hudson.model.AbstractBuild;
+import hudson.model.BuildListener;
+import hudson.model.Result;
 
 /**
  * An image gallery of archived artifacts Comparing same files in different folders.
@@ -48,11 +48,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
 public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeArchivedImagesGallery {
 
 	/*
-<<<<<<< HEAD
-     * serial UID.
-=======
      * serial version UID.
->>>>>>> [JENKINS-23772] Use String for image width rather than ints
      */
     private static final long serialVersionUID = -4861153536599621098L;
 
@@ -125,5 +121,23 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 		}
 		return true;
 	}
-	
+
+	public Object readResolve() {
+	    Integer imageWidth = getImageWidth();
+        String width = getImageWidthText();
+        if (imageWidth != null && imageWidth > 0) {
+            width = Integer.toString(imageWidth);
+        }
+        Integer imageInnerWidth = getImageInnerWidth();
+        String innerWidth = getImageInnerWidthText();
+        if (imageInnerWidth != null && imageInnerWidth > 0) {
+            innerWidth = Integer.toString(imageInnerWidth);
+        }
+        return new MultipleFolderComparativeArchivedImagesGallery(
+                getTitle(),
+                getBaseRootFolder(),
+                width,
+                innerWidth,
+                isMarkBuildAsUnstableIfNoArchivesFound());
+	}
 }

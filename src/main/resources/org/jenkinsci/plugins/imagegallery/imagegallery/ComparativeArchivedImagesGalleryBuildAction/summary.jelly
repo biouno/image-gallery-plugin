@@ -7,7 +7,7 @@
       jQuery("a.gallery").each(function(idx, el) {
           //alert(jQuery(el).html());
 
-        var html = jQuery(el).clone().find('img').attr("width", ${from.imageInnerWidth}).end().html();
+        var html = jQuery(el).clone().find('img').attr("width", ${from.imageInnerWidthText}).end().html();
 
           jQuery(el).colorbox({
               inline: false,
@@ -26,23 +26,11 @@
     <h2>${from.title}</h2>
     <j:forEach items="${from.images}" var="i" varStatus="st">
     	<div><h4>Compared images : ${i.key}</h4>
-        <j:choose>
-          <j:when test="${from.imageWidth > 0}">
             <a class='gallery' rel="${i.key}" href="artifact/${img.name}" title="${img.name}">
                <j:forEach items="${i.value}" var="img">
-	              <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidth}" />
+	              <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidthText}" />
                </j:forEach>
 	        </a>
-          </j:when>
-          <j:otherwise>
-        <a class='gallery' rel="${i.key}" href="artifact/${img.name}" title="${img.name}">
-
-            <j:forEach items="${i.value}" var="img">
-		          <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" />
-            </j:forEach>
-        </a>
-          </j:otherwise>
-        </j:choose>
         </div>
     </j:forEach>
 </j:jelly>

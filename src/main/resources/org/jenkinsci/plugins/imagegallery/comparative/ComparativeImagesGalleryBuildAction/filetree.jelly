@@ -13,7 +13,7 @@
                     <li>
                         <a href="test" class="leaf">
                         <j:forEach items="${node.value.leafs}" var="img" varStatus="st">
-                            <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidth}" />
+                            <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidthText}" />
                         </j:forEach>
                         </a>
                     </li>
@@ -25,9 +25,9 @@
             <span>Compared images : ${i.key}</span>
             <a class='gallery' rel="${i.key}" href="artifact/${img.name}" title="${img.name}">
                 <j:choose>
-                    <j:when test="${from.imageWidth > 0}">
+                    <j:when test="${from.imageWidthText > 0}">
                         <j:forEach items="${i.value}" var="img">
-                            <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidth}" />
+                            <img src="artifact/${img.name}" title="Root: ${img.baseRoot}" width="${from.imageWidthText}" />
                         </j:forEach>
                     </j:when>
                     <j:otherwise>

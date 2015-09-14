@@ -6,13 +6,13 @@
     jQuery.noConflict();
     jQuery(document).ready(function(){
       jQuery("a.leaf").each(function(idx, el) {
-        var html = jQuery(el).clone().find('img').attr("width", ${from.imageInnerWidth}).end().html();
+        var html = jQuery(el).clone().find('img').attr("width", ${from.imageInnerWidthText}).end().html();
 
           jQuery(el).colorbox({
               inline: false,
               photo: true,
               close: '${%Close}',
-              innerWidth: Math.min((2 * ${from.imageInnerWidth}) + 25, jQuery(window).width() - 50),
+              innerWidth: Math.min((2 * ${from.imageInnerWidthText}) + 25, jQuery(window).width() - 50),
               height: '100%',
               html: '<div style="overflow: auto; float: left;">' + html + "</div>"
           });
@@ -24,7 +24,7 @@
                 "animation" : 0
             }
         });
-        tree.find('.leaf').css('height', ${from.imageWidth} + 10);
+        tree.find('.leaf').css('height', ${from.imageWidthText} + 10);
 
 
         });
