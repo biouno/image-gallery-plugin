@@ -45,9 +45,12 @@ import org.kohsuke.stapler.DataBoundConstructor;
  */
 public class InFolderComparativeArchivedImagesGallery extends ComparativeArchivedImagesGallery {
 
-	private static final long serialVersionUID = -1981209232197421074L;
+	/*
+     * serial UID.
+     */
+    private static final long serialVersionUID = 4490034271037852059L;
 
-	/**
+    /**
 	 * Constructor called from jelly.
 	 * 
 	 * @param title Title of the image gallery
@@ -57,7 +60,7 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
 	 * @param markBuildAsUnstableIfNoArchivesFound Mark the build as unstable if no archives found
 	 */
 	@DataBoundConstructor
-	public InFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
+	public InFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
 	}

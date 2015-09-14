@@ -47,9 +47,12 @@ import org.kohsuke.stapler.DataBoundConstructor;
  */
 public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeArchivedImagesGallery {
 
-	private static Logger LOGGER = Logger.getLogger(MultipleFolderComparativeArchivedImagesGallery.class.getName());
-	
-	private static final long serialVersionUID = -1981209232197421074L;
+	/*
+     * serial UID.
+     */
+    private static final long serialVersionUID = -4861153536599621098L;
+
+    private static Logger LOGGER = Logger.getLogger(MultipleFolderComparativeArchivedImagesGallery.class.getName());
 	
 	/**
 	 * Constructor called from jelly.
@@ -58,7 +61,7 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 	 * @param markBuildAsUnstableIfNoArchivesFound
 	 */
 	@DataBoundConstructor
-	public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
+	public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
 			boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
 	}

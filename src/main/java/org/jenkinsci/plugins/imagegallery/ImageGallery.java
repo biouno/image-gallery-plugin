@@ -46,21 +46,20 @@ import java.util.Collection;
  */
 public abstract class ImageGallery implements Serializable, Describable<ImageGallery>, Comparable<ImageGallery> {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7290410166903500439L;
-	
-	/**
+	/*
+     * serial UID.
+     */
+    private static final long serialVersionUID = -1568321312897565728L;
+    /**
 	 * Title.
 	 */
 	private final String title;
 	/**
 	 * Images width.
 	 */
-	private final Integer imageWidth;
+	private final String imageWidth;
 	
-	public ImageGallery(String title, Integer imageWidth) {
+	public ImageGallery(String title, String imageWidth) {
 		this.title = title;
 		this.imageWidth = imageWidth;
 	}
@@ -75,7 +74,7 @@ public abstract class ImageGallery implements Serializable, Describable<ImageGal
 	/**
 	 * @return the imageWidth
 	 */
-	public Integer getImageWidth() {
+	public String getImageWidth() {
 		return imageWidth;
 	}
 

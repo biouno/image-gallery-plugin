@@ -45,12 +45,13 @@ import org.kohsuke.stapler.StaplerResponse;
  */
 public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedImagesGallery {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1507776620685441240L;
 
-	/**
+	/*
+     * serial UID.
+     */
+    private static final long serialVersionUID = 8022990812020649261L;
+
+    /**
 	 * Title.
 	 */
 	private final String title;
@@ -63,7 +64,7 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 	/**
      * Images width.
      */
-    private final Integer imageInnerWidth;
+    private final String imageInnerWidth;
 
 	/**
 	 * Constructor called from jelly.
@@ -74,7 +75,7 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 	 * @param markBuildAsUnstableIfNoArchivesFound
 	 */
 	@DataBoundConstructor
-	public ComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
+	public ComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
 		this.title = title;
@@ -99,7 +100,7 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
     /**
      * @return the imageInnerWidth
      */
-    public Integer getImageInnerWidth() {
+    public String getImageInnerWidth() {
         return imageInnerWidth;
     }
 

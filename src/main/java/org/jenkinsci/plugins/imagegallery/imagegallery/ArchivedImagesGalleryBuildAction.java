@@ -35,10 +35,12 @@ import java.io.Serializable;
  * @since 0.1
  */
 public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
-
-	private static final long serialVersionUID = -5987342090954152424L;
 	
-	/**
+	/*
+     * serial UID.
+     */
+    private static final long serialVersionUID = 8754812024509410103L;
+    /**
 	 * The title.
 	 */
 	private final String title;
@@ -49,7 +51,7 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	/**
 	 * The image width.
 	 */
-	private final int imageWidth;
+	private final String imageWidth;
 	
 	/**
 	 * Constructor with args.
@@ -57,13 +59,13 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	 * @param images
 	 * @param imageWidth
 	 */
-	public ArchivedImagesGalleryBuildAction(String title, String[] images, Integer imageWidth) {
+	public ArchivedImagesGalleryBuildAction(String title, String[] images, String imageWidth) {
 		this.title = title;
 		this.images = images;
 		if(imageWidth != null) {
 			this.imageWidth = imageWidth;
 		} else {
-			this.imageWidth = 0;
+			this.imageWidth = "0";
 		}
 	}
 	
@@ -105,7 +107,7 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	/**
 	 * @return the imageWidth
 	 */
-	public int getImageWidth() {
+	public String getImageWidth() {
 		return imageWidth;
 	}
 

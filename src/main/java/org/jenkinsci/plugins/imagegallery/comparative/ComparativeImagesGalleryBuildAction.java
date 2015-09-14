@@ -34,10 +34,13 @@ import java.io.Serializable;
  * @since 1.0
  */
 public class ComparativeImagesGalleryBuildAction implements Action, Serializable {
-
-	private static final long serialVersionUID = -5987342090954152424L;
 	
-	/**
+	/*
+     * serial UID.
+     */
+    private static final long serialVersionUID = -4788699009385594824L;
+
+    /**
 	 * The title.
 	 */
 	private final String title;
@@ -48,12 +51,12 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	/**
 	 * The image width.
 	 */
-	private final Integer imageWidth;
+	private final String imageWidth;
 
     /**
      * The inner image width
      */
-    private Integer imageInnerWidth;
+    private String imageInnerWidth;
 	
 	/**
 	 * Constructor with args.
@@ -63,14 +66,14 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	 * @param images
 	 * @param imageWidth
 	 */
-	public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, Integer imageWidth, Integer imageInnerWidth) {
+	public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, String imageWidth, String imageInnerWidth) {
 		this.title = title;
 		this.tree = tree;
         this.imageInnerWidth = imageInnerWidth;
 		if(imageWidth != null) {
 			this.imageWidth = imageWidth;
 		} else {
-			this.imageWidth = new Integer(0);
+			this.imageWidth = "0";
 		}
 	}
 	
@@ -112,14 +115,14 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	/**
 	 * @return the imageWidth
 	 */
-	public Integer getImageWidth() {
+	public String getImageWidth() {
 		return imageWidth;
 	}
 
     /**
      * @return the imageInnerWidth
      */
-    public Integer getImageInnerWidth() {
+    public String getImageInnerWidth() {
         return imageInnerWidth;
     }
 }

@@ -50,9 +50,12 @@ import org.kohsuke.stapler.DataBoundConstructor;
  */
 public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 
-	private static final long serialVersionUID = -9160740389012923833L;
+	/*
+     * serial UID.
+     */
+    private static final long serialVersionUID = -4795337742069989021L;
 
-	private static Logger LOGGER = Logger.getLogger("com.tupilabs.image_gallery");
+    private static Logger LOGGER = Logger.getLogger("com.tupilabs.image_gallery");
 	
 	/**
 	 * Include pattern.
@@ -66,7 +69,7 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 	 * @param markBuildAsUnstableIfNoArchivesFound
 	 */
 	@DataBoundConstructor
-	public ArchivedImagesGallery(String title, String includes, Integer imageWidth,
+	public ArchivedImagesGallery(String title, String includes, String imageWidth,
 			Boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
 		this.includes = includes;

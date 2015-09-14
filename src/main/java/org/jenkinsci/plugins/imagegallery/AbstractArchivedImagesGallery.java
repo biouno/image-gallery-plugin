@@ -8,17 +8,16 @@ package org.jenkinsci.plugins.imagegallery;
  */
 public abstract class AbstractArchivedImagesGallery extends ImageGallery {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2264764254582937499L;
-	
-	/**
+	/*
+     * serial UID.
+     */
+    private static final long serialVersionUID = -1798633376573726389L;
+    /**
 	 * If checked, marks the build as unstable if no archives were found.
 	 */
 	private final boolean markBuildAsUnstableIfNoArchivesFound;
 	
-	public AbstractArchivedImagesGallery(String title, Integer imageWidth, 
+	public AbstractArchivedImagesGallery(String title, String imageWidth,
 			Boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, imageWidth);
 		this.markBuildAsUnstableIfNoArchivesFound = markBuildAsUnstableIfNoArchivesFound;
