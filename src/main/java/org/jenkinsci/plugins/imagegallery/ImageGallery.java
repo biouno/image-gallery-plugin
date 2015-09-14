@@ -23,6 +23,10 @@
  */
 package org.jenkinsci.plugins.imagegallery;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Collection;
+
 import hudson.DescriptorExtensionList;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
@@ -32,10 +36,6 @@ import hudson.model.Describable;
 import hudson.model.Descriptor;
 import hudson.model.Hudson;
 import hudson.model.Node;
-
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.Collection;
 
 
 /**
@@ -47,9 +47,9 @@ import java.util.Collection;
 public abstract class ImageGallery implements Serializable, Describable<ImageGallery>, Comparable<ImageGallery> {
 
 	/*
-     * serial UID.
+     * serial version UID.
      */
-    private static final long serialVersionUID = -1568321312897565728L;
+    private static final long serialVersionUID = 3016249288702988364L;
     /**
 	 * Title.
 	 */
@@ -57,13 +57,23 @@ public abstract class ImageGallery implements Serializable, Describable<ImageGal
 	/**
 	 * Images width.
 	 */
-	private final String imageWidth;
+	@Deprecated
+	private Integer imageWidth;
 	
-	public ImageGallery(String title, String imageWidth) {
+	private final String imageWidthText;
+	
+	@Deprecated
+	public ImageGallery(String title, Integer imageWidth) {
 		this.title = title;
 		this.imageWidth = imageWidth;
+		imageWidthText = Integer.toString(imageWidth);
 	}
-	
+
+	public ImageGallery(String title, String imageWidth) {
+	    this.title = title;
+	    this.imageWidthText = imageWidth;
+	}
+
 	/**
 	 * @return the title
 	 */
@@ -74,11 +84,19 @@ public abstract class ImageGallery implements Serializable, Describable<ImageGal
 	/**
 	 * @return the imageWidth
 	 */
-	public String getImageWidth() {
+	@Deprecated
+	public Integer getImageWidth() {
 		return imageWidth;
 	}
 
-	/* (non-Javadoc)
+	/**
+     * @return the imageWidthText
+     */
+    public String getImageWidthText() {
+        return imageWidthText;
+    }
+
+    /* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	public int compareTo(ImageGallery o) {

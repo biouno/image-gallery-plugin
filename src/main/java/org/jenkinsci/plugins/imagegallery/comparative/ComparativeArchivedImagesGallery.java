@@ -23,9 +23,6 @@
  */
 package org.jenkinsci.plugins.imagegallery.comparative;
 
-import hudson.FilePath;
-import hudson.util.FormValidation;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +33,9 @@ import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
 
+import hudson.FilePath;
+import hudson.util.FormValidation;
+
 
 /**
  * Base image gallery to compare images in different way.
@@ -45,11 +45,10 @@ import org.kohsuke.stapler.StaplerResponse;
  */
 public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedImagesGallery {
 
-
 	/*
-     * serial UID.
+     * serial version UID.
      */
-    private static final long serialVersionUID = 8022990812020649261L;
+    private static final long serialVersionUID = -1507776620685441240L;
 
     /**
 	 * Title.
@@ -64,7 +63,13 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 	/**
      * Images width.
      */
-    private final String imageInnerWidth;
+	@Deprecated
+    private Integer imageInnerWidth;
+
+	/**
+	 * Images inner width.
+	 */
+	private final String imageInnerWidthText;
 
 	/**
 	 * Constructor called from jelly.
@@ -74,14 +79,32 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 	 * @param imageInnerWidth
 	 * @param markBuildAsUnstableIfNoArchivesFound
 	 */
-	@DataBoundConstructor
-	public ComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+	@Deprecated
+	public ComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
 		this.title = title;
 		this.baseRootFolder = baseRootFolder;
         this.imageInnerWidth = imageInnerWidth;
+        imageInnerWidthText = Integer.toString(imageInnerWidth);
 	}
+
+	/**
+     * Constructor called from jelly.
+     * @param title
+     * @param baseRootFolder
+     * @param imageWidth
+     * @param imageInnerWidth
+     * @param markBuildAsUnstableIfNoArchivesFound
+     */
+	@DataBoundConstructor
+    public ComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+                                                    boolean markBuildAsUnstableIfNoArchivesFound) {
+        super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
+        this.title = title;
+        this.baseRootFolder = baseRootFolder;
+        this.imageInnerWidthText = imageInnerWidth;
+    }
 	
 	/**
 	 * @return the title
@@ -100,9 +123,17 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
     /**
      * @return the imageInnerWidth
      */
-    public String getImageInnerWidth() {
+	@Deprecated
+    public Integer getImageInnerWidth() {
         return imageInnerWidth;
     }
+
+	/**
+	 * @return the imageInnerWidthText
+	 */
+	public String getImageInnerWidthText() {
+	    return imageInnerWidthText;
+	}
 
 	public static abstract class ComparativeDescriptorImpl extends ImageGalleryDescriptor {
 

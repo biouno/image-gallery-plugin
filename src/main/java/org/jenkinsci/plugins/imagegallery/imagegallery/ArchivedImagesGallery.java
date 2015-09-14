@@ -51,9 +51,9 @@ import org.kohsuke.stapler.DataBoundConstructor;
 public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 
 	/*
-     * serial UID.
+     * serial version UID.
      */
-    private static final long serialVersionUID = -4795337742069989021L;
+    private static final long serialVersionUID = 165095831454744155L;
 
     private static Logger LOGGER = Logger.getLogger("com.tupilabs.image_gallery");
 	
@@ -68,13 +68,26 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 	 * @param imageWidth
 	 * @param markBuildAsUnstableIfNoArchivesFound
 	 */
-	@DataBoundConstructor
-	public ArchivedImagesGallery(String title, String includes, String imageWidth,
+	@Deprecated
+	public ArchivedImagesGallery(String title, String includes, Integer imageWidth,
 			Boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
 		this.includes = includes;
 	}
-	
+
+	/**
+     * Constructor called from jelly.
+     * @param includes
+     * @param imageWidth
+     * @param markBuildAsUnstableIfNoArchivesFound
+     */
+    @DataBoundConstructor
+    public ArchivedImagesGallery(String title, String includes, String imageWidth,
+            Boolean markBuildAsUnstableIfNoArchivesFound) {
+        super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
+        this.includes = includes;
+    }
+
 	@Extension
 	public static class DescriptorImpl extends ImageGalleryDescriptor {
 		/* (non-Javadoc)
@@ -122,7 +135,7 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 					images.add(fileName);
 				}
 				String title = Util.replaceMacro(build.getEnvironment(listener).expand(getTitle()), build.getBuildVariableResolver());
-				build.addAction(new ArchivedImagesGalleryBuildAction(title, images.toArray(new String[0]), getImageWidth()));
+				build.addAction(new ArchivedImagesGalleryBuildAction(title, images.toArray(new String[0]), getImageWidthText()));
 			} else {
 				listener.getLogger().append("No files found for image gallery.");
 			}

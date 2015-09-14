@@ -46,9 +46,9 @@ import org.kohsuke.stapler.DataBoundConstructor;
 public class InFolderComparativeArchivedImagesGallery extends ComparativeArchivedImagesGallery {
 
 	/*
-     * serial UID.
+     * serial version UID.
      */
-    private static final long serialVersionUID = 4490034271037852059L;
+    private static final long serialVersionUID = 5537875107916417554L;
 
     /**
 	 * Constructor called from jelly.
@@ -59,12 +59,27 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
 	 * @param imageInnerWidth Width for the images in the popup display
 	 * @param markBuildAsUnstableIfNoArchivesFound Mark the build as unstable if no archives found
 	 */
-	@DataBoundConstructor
-	public InFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+	@Deprecated
+	public InFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
 	}
-	
+
+	 /**
+     * Constructor called from jelly.
+     * 
+     * @param title Title of the image gallery
+     * @param baseRootFolder Root folder where the images will be retrieve from
+     * @param imageWidth thumbnail width of each images
+     * @param imageInnerWidth Width for the images in the popup display
+     * @param markBuildAsUnstableIfNoArchivesFound Mark the build as unstable if no archives found
+     */
+    @DataBoundConstructor
+    public InFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+                                                    boolean markBuildAsUnstableIfNoArchivesFound) {
+        super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
+    }
+
 	@Extension
 	public static class DescriptorImpl extends ComparativeDescriptorImpl {
 		@Override
@@ -90,7 +105,7 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
                         tree.addToBranch(folder, new FilePair(path.getName(), StringUtils.join(artifactsRelativeFile, '/')));
                 }
                 String title = Util.replaceMacro(build.getEnvironment(listener).expand(getTitle()), build.getBuildVariableResolver());
-				build.addAction(new ComparativeImagesGalleryBuildAction(title, tree, getImageWidth(), getImageInnerWidth()));
+				build.addAction(new ComparativeImagesGalleryBuildAction(title, tree, getImageWidthText(), getImageInnerWidthText()));
 			} else {
 				listener.getLogger().append("No files found for image gallery.");
 			}

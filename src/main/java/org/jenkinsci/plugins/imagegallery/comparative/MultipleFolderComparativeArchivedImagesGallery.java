@@ -48,7 +48,11 @@ import org.kohsuke.stapler.DataBoundConstructor;
 public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeArchivedImagesGallery {
 
 	/*
+<<<<<<< HEAD
      * serial UID.
+=======
+     * serial version UID.
+>>>>>>> [JENKINS-23772] Use String for image width rather than ints
      */
     private static final long serialVersionUID = -4861153536599621098L;
 
@@ -60,11 +64,23 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 	 * @param imageWidth
 	 * @param markBuildAsUnstableIfNoArchivesFound
 	 */
-	@DataBoundConstructor
-	public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+	@Deprecated
+	public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
 			boolean markBuildAsUnstableIfNoArchivesFound) {
 		super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
 	}
+	
+	/**
+     * Constructor called from jelly.
+     * @param includes
+     * @param imageWidth
+     * @param markBuildAsUnstableIfNoArchivesFound
+     */
+	@DataBoundConstructor
+    public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+            boolean markBuildAsUnstableIfNoArchivesFound) {
+        super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
+    }
 
 	@Extension
 	public static class DescriptorImpl extends ComparativeDescriptorImpl {
@@ -97,7 +113,7 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 					}
 				}
 				String title = Util.replaceMacro(build.getEnvironment(listener).expand(getTitle()), build.getBuildVariableResolver());
-				build.addAction(new ComparativeImagesGalleryBuildAction(title, tree, getImageWidth(), getImageInnerWidth()));
+				build.addAction(new ComparativeImagesGalleryBuildAction(title, tree, getImageWidthText(), getImageInnerWidthText()));
 			} else {
 				listener.getLogger().append("No files found for image gallery.");
 			}

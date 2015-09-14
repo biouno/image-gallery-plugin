@@ -36,10 +36,9 @@ import java.io.Serializable;
 public class ComparativeImagesGalleryBuildAction implements Action, Serializable {
 	
 	/*
-     * serial UID.
+     * serial version UID.
      */
-    private static final long serialVersionUID = -4788699009385594824L;
-
+    private static final long serialVersionUID = -3667733389967779689L;
     /**
 	 * The title.
 	 */
@@ -51,13 +50,21 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	/**
 	 * The image width.
 	 */
-	private final String imageWidth;
-
+	@Deprecated
+	private Integer imageWidth;
+	/**
+	 * The image width.
+	 */
+	private final String imageWidthText;
     /**
      * The inner image width
      */
-    private String imageInnerWidth;
-	
+	@Deprecated
+    private Integer imageInnerWidth;
+	/**
+	 * The image inner width.
+	 */
+	private final String imageInnerWidthText;
 	/**
 	 * Constructor with args.
 	 * @param title
@@ -66,17 +73,39 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	 * @param images
 	 * @param imageWidth
 	 */
-	public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, String imageWidth, String imageInnerWidth) {
+	@Deprecated
+	public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, Integer imageWidth, Integer imageInnerWidth) {
 		this.title = title;
 		this.tree = tree;
         this.imageInnerWidth = imageInnerWidth;
+        imageWidthText = Integer.toString(imageInnerWidth);
 		if(imageWidth != null) {
 			this.imageWidth = imageWidth;
 		} else {
-			this.imageWidth = "0";
+		    this.imageWidth = Integer.valueOf(0);
 		}
+		imageInnerWidthText = Integer.toString(this.imageWidth);
 	}
-	
+
+	/**
+     * Constructor with args.
+     * @param title
+     * @param imageWidth2 
+     * @param tree 
+     * @param images
+     * @param imageWidth
+     */
+    public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, String imageWidth, String imageInnerWidth) {
+        this.title = title;
+        this.tree = tree;
+        this.imageInnerWidthText = imageInnerWidth;
+        if(imageWidth != null) {
+            this.imageWidthText = imageWidth;
+        } else {
+            this.imageWidthText = "0";
+        }
+    }
+
 	/**
 	 * @return the title
 	 */
@@ -115,14 +144,29 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	/**
 	 * @return the imageWidth
 	 */
-	public String getImageWidth() {
+	@Deprecated
+	public Integer getImageWidth() {
 		return imageWidth;
 	}
+
+	/**
+	 * @return the imageWidthText
+	 */
+	public String getImageWidthText() {
+        return imageWidthText;
+    }
 
     /**
      * @return the imageInnerWidth
      */
-    public String getImageInnerWidth() {
+	@Deprecated
+    public Integer getImageInnerWidth() {
         return imageInnerWidth;
+    }
+	/**
+	 * @return the imageInnerWidthText
+	 */
+	public String getImageInnerWidthText() {
+        return imageInnerWidthText;
     }
 }
