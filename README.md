@@ -1,7 +1,5 @@
 # Jenkins Image Gallery Plug-in
 
-[![Build Status](https://buildhive.cloudbees.com/job/jenkinsci/job/image-gallery-plugin/badge/icon)](https://buildhive.cloudbees.com/job/jenkinsci/job/image-gallery-plugin/)
-
 This plug-in reads a job workspace and collects images to produce an image 
 gallery using [colorbox](http://www.jacklmoore.com/colorbox "Colorbox") 
 lightbox Javascript library.

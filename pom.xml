@@ -1,80 +1,85 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.jenkins-ci.plugins</groupId>
-    <artifactId>plugin</artifactId>
-    <version>1.580.3</version><!-- which version of Jenkins is this plugin built against? -->
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.jenkins-ci.plugins</groupId>
+		<artifactId>plugin</artifactId>
+		<version>1.580.3</version><!-- which version of Jenkins is this plugin 
+			built against? -->
+	</parent>
 
-  <groupId>com.tupilabs.image_gallery</groupId>
-  <artifactId>image-gallery</artifactId>
-  <version>1.2-SNAPSHOT</version>
-  <packaging>hpi</packaging>
-  
-  <name>Image Gallery Plug-in</name>
-  <!-- url></url -->
-  <description>A plug-in to create image galleries from image, video or sound files in your workspace</description>
-  
-  <developers>
-    <developer>
-      <email>brunodepaulak@yahoo.com.br</email>
-      <id>kinow</id>
-      <name>Bruno P. Kinoshita</name>
-      <organization>TupiLabs</organization>
-      <organizationUrl>http://www.tupilabs.com</organizationUrl>
-      <timezone>-3</timezone>
-      <url>http://www.kinoshita.eti.br</url>
-      <roles>
-        <role>developer</role>
-      </roles>
-    </developer>
-  </developers>
-  
-  <organization>
-    <name>TupiLabs</name>
-    <url>http://www.tupilabs.com</url>
-  </organization>
-  
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
-  <scm>
-    <url>http://github.com/jenkinsci/image-gallery-plugin</url>
-    <connection>scm:git:git://github.com/jenkinsci/image-gallery-plugin.git</connection>
-    <developerConnection>scm:git:git@github.com:jenkinsci/image-gallery-plugin.git</developerConnection>
-  </scm>
- 
-  <licenses>
-    <license>
-      <name>MIT</name>
-      <url>http://www.opensource.org/licenses/mit-license.php</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
+	<groupId>com.tupilabs.image_gallery</groupId>
+	<artifactId>image-gallery</artifactId>
+	<version>1.2-SNAPSHOT</version>
+	<packaging>hpi</packaging>
 
-  <!-- get every artifact through repo.jenkins-ci.org, which proxies all the artifacts that we need -->
-  <repositories>
-    <repository>
-      <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
-    </repository>
-  </repositories>
+	<name>Image Gallery Plug-in</name>
+	<!-- url></url -->
+	<description>A plug-in to create image galleries from image, video or sound files in your workspace</description>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>repo.jenkins-ci.org</id>
-      <url>http://repo.jenkins-ci.org/public/</url>
-    </pluginRepository>
-  </pluginRepositories>
-  
-  <dependencies>
-    <!-- JQuery is included only once -->
-    <dependency>
-        <groupId>org.kohsuke.stapler</groupId>
-        <artifactId>stapler-adjunct-jquery</artifactId>
-        <version>1.8.3-0</version>
-    </dependency>
-  </dependencies>
-  
+	<developers>
+		<developer>
+			<email>brunodepaulak@yahoo.com.br</email>
+			<id>kinow</id>
+			<name>Bruno P. Kinoshita</name>
+			<organization>TupiLabs</organization>
+			<organizationUrl>http://www.tupilabs.com</organizationUrl>
+			<timezone>-3</timezone>
+			<url>http://www.kinoshita.eti.br</url>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<organization>
+		<name>TupiLabs</name>
+		<url>http://www.tupilabs.com</url>
+	</organization>
+
+	<inceptionYear>2012</inceptionYear>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<scm>
+		<url>http://github.com/jenkinsci/image-gallery-plugin</url>
+		<connection>scm:git:git://github.com/jenkinsci/image-gallery-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:jenkinsci/image-gallery-plugin.git</developerConnection>
+	</scm>
+
+	<licenses>
+		<license>
+			<name>MIT</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<!-- get every artifact through repo.jenkins-ci.org, which proxies all the 
+		artifacts that we need -->
+	<repositories>
+		<repository>
+			<id>repo.jenkins-ci.org</id>
+			<url>http://repo.jenkins-ci.org/public/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repo.jenkins-ci.org</id>
+			<url>http://repo.jenkins-ci.org/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+		<!-- JQuery is included only once -->
+		<dependency>
+			<groupId>org.kohsuke.stapler</groupId>
+			<artifactId>stapler-adjunct-jquery</artifactId>
+			<version>1.8.3-0</version>
+		</dependency>
+	</dependencies>
+
 </project>
