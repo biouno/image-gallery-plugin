@@ -28,7 +28,6 @@ import java.util.List;
 
 import org.jenkinsci.plugins.imagegallery.AbstractArchivedImagesGallery;
 import org.jenkinsci.plugins.imagegallery.ImageGalleryDescriptor;
-import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
@@ -97,7 +96,6 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
      * @param imageInnerWidth
      * @param markBuildAsUnstableIfNoArchivesFound
      */
-	@DataBoundConstructor
     public ComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {
         super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);

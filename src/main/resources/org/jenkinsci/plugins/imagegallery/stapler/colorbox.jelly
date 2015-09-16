@@ -1,0 +1,8 @@
+<!--
+Use it like <st:adjunct includes="org.jenkinsci.plugins.imagegallery.stapler.colorbox"/>
+-->
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler">
+  <st:adjunct includes="org.kohsuke.stapler.jquery"/>
+  <script src="${it.packageUrl}/colorbox/js/jquery.colorbox.js" type="text/javascript"></script>
+  <link href="${it.packageUrl}/colorbox/css/colorbox.css" type="text/css" rel="stylesheet" />
+</j:jelly>

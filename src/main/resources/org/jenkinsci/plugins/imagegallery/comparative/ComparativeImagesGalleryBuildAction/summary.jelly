@@ -1,7 +1,7 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:i="jelly:fmt" xmlns:local="local">
-    <script type="text/javascript" src="${rootURL}/plugin/image-gallery/js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="${rootURL}/plugin/image-gallery/js/jquery.colorbox.js"></script>
-    <script type="text/javascript" src="${rootURL}/plugin/image-gallery/js/jquery.jstree.js"></script>
+    <st:adjunct includes="org.kohsuke.stapler.jquery"/>
+    <st:adjunct includes="org.jenkinsci.plugins.imagegallery.stapler.colorbox"/>
+    <st:adjunct includes="org.jenkinsci.plugins.imagegallery.stapler.jstree"/>
     <script type="text/javascript">
     jQuery.noConflict();
     jQuery(document).ready(function(){
@@ -29,8 +29,6 @@
 
         });
     </script>
-    <link href="${rootURL}/plugin/image-gallery/css/colorbox.css" type="text/css" rel="stylesheet" />
-    <link href="${rootURL}/plugin/image-gallery/css/plugin.css" type="text/css" rel="stylesheet" />
     <h3>${from.title}</h3>
     <div class="comparative-gallery-tree">
         <ul>
