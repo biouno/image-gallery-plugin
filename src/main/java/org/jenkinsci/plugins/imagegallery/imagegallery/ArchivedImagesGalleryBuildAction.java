@@ -23,11 +23,9 @@
  */
 package org.jenkinsci.plugins.imagegallery.imagegallery;
 
-import hudson.model.Action;
-
 import java.io.Serializable;
 
-import org.jenkinsci.plugins.imagegallery.comparative.ComparativeImagesGalleryBuildAction;
+import hudson.model.Action;
 
 /**
  * A project action with the list of archived image file names 

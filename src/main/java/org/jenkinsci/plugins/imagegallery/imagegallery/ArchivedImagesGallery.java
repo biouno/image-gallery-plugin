@@ -23,13 +23,6 @@
  */
 package org.jenkinsci.plugins.imagegallery.imagegallery;
 
-import hudson.Extension;
-import hudson.FilePath;
-import hudson.Util;
-import hudson.model.BuildListener;
-import hudson.model.Result;
-import hudson.model.AbstractBuild;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,6 +33,13 @@ import java.util.logging.Logger;
 import org.jenkinsci.plugins.imagegallery.AbstractArchivedImagesGallery;
 import org.jenkinsci.plugins.imagegallery.ImageGalleryDescriptor;
 import org.kohsuke.stapler.DataBoundConstructor;
+
+import hudson.Extension;
+import hudson.FilePath;
+import hudson.Util;
+import hudson.model.AbstractBuild;
+import hudson.model.BuildListener;
+import hudson.model.Result;
 
 /**
  * An image gallery of archived artifacts. Its descriptor is a static inner 
