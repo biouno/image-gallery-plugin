@@ -112,7 +112,7 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 	}
 	
 	/**
-	 * @return the includes
+	 * @return the baseRootFolder
 	 */
 	public String getBaseRootFolder() {
 		return baseRootFolder;
