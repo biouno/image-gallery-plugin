@@ -56,8 +56,10 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 	
 	/**
 	 * Constructor called from jelly.
-	 * @param includes
+	 * @param title
+	 * @param baseRootFolder
 	 * @param imageWidth
+	 * @param imageInnerWidth
 	 * @param markBuildAsUnstableIfNoArchivesFound
 	 */
 	@Deprecated
@@ -68,8 +70,10 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 	
 	/**
      * Constructor called from jelly.
-     * @param includes
+     * @param title
+     * @param baseRootFolder
      * @param imageWidth
+     * @param imageInnerWidth
      * @param markBuildAsUnstableIfNoArchivesFound
      */
 	@DataBoundConstructor
