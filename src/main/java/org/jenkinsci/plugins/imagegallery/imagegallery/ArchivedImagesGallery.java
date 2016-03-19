@@ -64,9 +64,10 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 
 	/**
 	 * Constructor called from jelly.
-	 * @param includes
-	 * @param imageWidth
-	 * @param markBuildAsUnstableIfNoArchivesFound
+	 * @param title gallery title
+	 * @param includes ant-pattern to include files
+	 * @param imageWidth image width
+	 * @param markBuildAsUnstableIfNoArchivesFound flag to mark build as unstable if nothing found
 	 */
 	@Deprecated
 	public ArchivedImagesGallery(String title, String includes, Integer imageWidth,
@@ -77,9 +78,10 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 
 	/**
      * Constructor called from jelly.
-     * @param includes
-     * @param imageWidthText
-     * @param markBuildAsUnstableIfNoArchivesFound
+     * @param title gallery title
+     * @param includes ant-pattern to include files
+     * @param imageWidthText image width
+     * @param markBuildAsUnstableIfNoArchivesFound flag to mark build as unstable if nothing found
      */
     @DataBoundConstructor
     public ArchivedImagesGallery(String title, String includes, String imageWidthText,

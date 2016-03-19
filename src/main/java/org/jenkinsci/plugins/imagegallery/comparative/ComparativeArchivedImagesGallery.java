@@ -72,11 +72,11 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 
 	/**
 	 * Constructor called from jelly.
-	 * @param title
-	 * @param baseRootFolder
-	 * @param imageWidth
-	 * @param imageInnerWidth
-	 * @param markBuildAsUnstableIfNoArchivesFound
+	 * @param title gallery title
+	 * @param baseRootFolder base root folder
+	 * @param imageWidth width
+	 * @param imageInnerWidth inner width
+	 * @param markBuildAsUnstableIfNoArchivesFound flag to fail build if nothing found
 	 */
 	@Deprecated
 	public ComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
@@ -90,11 +90,11 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 
 	/**
      * Constructor called from jelly.
-     * @param title
-     * @param baseRootFolder
-     * @param imageWidthText
-     * @param imageInnerWidthText
-     * @param markBuildAsUnstableIfNoArchivesFound
+     * @param title gallery title
+     * @param baseRootFolder base root folder
+     * @param imageWidthText width
+     * @param imageInnerWidthText inner width
+     * @param markBuildAsUnstableIfNoArchivesFound flag to fail build if nothing found
      */
     public ComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidthText, String imageInnerWidthText,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {

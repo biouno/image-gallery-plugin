@@ -56,11 +56,11 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 	
 	/**
 	 * Constructor called from jelly.
-	 * @param title
-	 * @param baseRootFolder
-	 * @param imageWidth
-	 * @param imageInnerWidth
-	 * @param markBuildAsUnstableIfNoArchivesFound
+	 * @param title gallery title
+	 * @param baseRootFolder base root folder
+	 * @param imageWidth image width
+	 * @param imageInnerWidth image inner width
+	 * @param markBuildAsUnstableIfNoArchivesFound flag to mark build as unstable if nothing found
 	 */
 	@Deprecated
 	public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
@@ -70,11 +70,11 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 	
 	/**
      * Constructor called from jelly.
-     * @param title
-     * @param baseRootFolder
-     * @param imageWidthText
-     * @param imageInnerWidthText
-     * @param markBuildAsUnstableIfNoArchivesFound
+     * @param title gallery title
+     * @param baseRootFolder base root folder
+     * @param imageWidthText image width
+     * @param imageInnerWidthText image inner width
+     * @param markBuildAsUnstableIfNoArchivesFound flag to mark build as unstable if nothing found
      */
 	@DataBoundConstructor
     public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidthText, String imageInnerWidthText,

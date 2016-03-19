@@ -67,11 +67,10 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	private final String imageInnerWidthText;
 	/**
 	 * Constructor with args.
-	 * @param title
-	 * @param imageWidth2 
-	 * @param tree 
-	 * @param images
-	 * @param imageWidth
+	 * @param title gallery title
+	 * @param tree file pair tree 
+	 * @param imageWidth image width
+	 * @param imageInnerWidth image inner width
 	 */
 	@Deprecated
 	public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, Integer imageWidth, Integer imageInnerWidth) {
@@ -89,10 +88,10 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 
 	/**
      * Constructor with args.
-     * @param title
-     * @param tree
-     * @param imageWidthText
-     * @param imageInnerWidthText
+     * @param title gallery title
+     * @param tree file pair tree
+     * @param imageWidthText image width
+     * @param imageInnerWidthText image inner width
      */
     public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, String imageWidthText, String imageInnerWidthText) {
         this.title = title;

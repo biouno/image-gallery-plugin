@@ -60,9 +60,9 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	
 	/**
 	 * Constructor with args.
-	 * @param title
-	 * @param images
-	 * @param imageWidth
+	 * @param title gallery title
+	 * @param images gallery images
+	 * @param imageWidth image width
 	 */
 	@Deprecated
 	public ArchivedImagesGalleryBuildAction(String title, String[] images, Integer imageWidth) {
@@ -78,9 +78,9 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 
 	/**
      * Constructor with args.
-     * @param title
-     * @param images
-     * @param imageWidthText
+     * @param title gallery title
+     * @param images gallery images
+     * @param imageWidthText image width
      */
     public ArchivedImagesGalleryBuildAction(String title, String[] images, String imageWidthText) {
         this.title = title;
