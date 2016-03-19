@@ -92,16 +92,16 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
      * Constructor called from jelly.
      * @param title
      * @param baseRootFolder
-     * @param imageWidth
-     * @param imageInnerWidth
+     * @param imageWidthText
+     * @param imageInnerWidthText
      * @param markBuildAsUnstableIfNoArchivesFound
      */
-    public ComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+    public ComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidthText, String imageInnerWidthText,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {
-        super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
+        super(title, imageWidthText, markBuildAsUnstableIfNoArchivesFound);
         this.title = title;
         this.baseRootFolder = baseRootFolder;
-        this.imageInnerWidthText = imageInnerWidth;
+        this.imageInnerWidthText = imageInnerWidthText;
     }
 	
 	/**
@@ -135,8 +135,8 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 
 	public static abstract class ComparativeDescriptorImpl extends ImageGalleryDescriptor {
 
-        public FormValidation doCheckImageInnerWidth(StaplerRequest req, StaplerResponse resp, @QueryParameter String imageInnerWidth) throws Exception {
-            return FormValidation.validateRequired(imageInnerWidth);
+        public FormValidation doCheckImageInnerWidth(StaplerRequest req, StaplerResponse resp, @QueryParameter String imageInnerWidthText) throws Exception {
+            return FormValidation.validateRequired(imageInnerWidthText);
         }
 
 	}

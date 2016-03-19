@@ -27,6 +27,8 @@ import hudson.model.Action;
 
 import java.io.Serializable;
 
+import org.codehaus.plexus.util.StringUtils;
+
 /**
  * A project action with a group of image files associated by a path and a set of files
  *
@@ -90,19 +92,18 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	/**
      * Constructor with args.
      * @param title
-     * @param imageWidth2 
-     * @param tree 
-     * @param images
-     * @param imageWidth
+     * @param tree
+     * @param imageWidthText
+     * @param imageInnerWidthText
      */
-    public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, String imageWidth, String imageInnerWidth) {
+    public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, String imageWidthText, String imageInnerWidthText) {
         this.title = title;
         this.tree = tree;
-        this.imageInnerWidthText = imageInnerWidth;
-        if(imageWidth != null) {
-            this.imageWidthText = imageWidth;
+        this.imageInnerWidthText = imageInnerWidthText;
+        if(StringUtils.isNotBlank(imageWidthText)) {
+            this.imageWidthText = imageWidthText;
         } else {
-            this.imageWidthText = "0";
+            this.imageWidthText = "";
         }
     }
 
@@ -172,7 +173,7 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 
 	public Object readResolve() {
 	    String width = 
-	            (imageWidth != null && imageWidth > 0) ? Integer.toString(imageWidth) : "0";
+	            (imageWidth != null && imageWidth > 0) ? Integer.toString(imageWidth) : "";
         String innerWidth = 
                 (imageInnerWidth != null && imageInnerWidth > 0) ? Integer.toString(imageInnerWidth) : "0";
 	    return new ComparativeImagesGalleryBuildAction(

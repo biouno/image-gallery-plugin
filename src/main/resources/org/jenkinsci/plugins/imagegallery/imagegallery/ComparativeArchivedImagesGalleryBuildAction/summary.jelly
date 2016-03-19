@@ -7,7 +7,7 @@
       jQuery("a.gallery").each(function(idx, el) {
           //alert(jQuery(el).html());
 
-        var html = jQuery(el).clone().find('img').attr("width", ${from.imageInnerWidthText}).end().html();
+          var html = jQuery(el).clone().find('img').attr("width", ${from.imageInnerWidthText}).end().html();
 
           jQuery(el).colorbox({
               inline: false,

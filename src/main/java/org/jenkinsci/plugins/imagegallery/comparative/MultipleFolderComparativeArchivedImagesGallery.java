@@ -72,14 +72,14 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
      * Constructor called from jelly.
      * @param title
      * @param baseRootFolder
-     * @param imageWidth
-     * @param imageInnerWidth
+     * @param imageWidthText
+     * @param imageInnerWidthText
      * @param markBuildAsUnstableIfNoArchivesFound
      */
 	@DataBoundConstructor
-    public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+    public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidthText, String imageInnerWidthText,
             boolean markBuildAsUnstableIfNoArchivesFound) {
-        super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
+        super(title, baseRootFolder, imageWidthText, imageInnerWidthText, markBuildAsUnstableIfNoArchivesFound);
     }
 
 	@Extension

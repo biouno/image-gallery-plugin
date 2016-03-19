@@ -6,10 +6,10 @@
   <f:entry title="Base root dir" field="baseRootFolder" help="${rootURL}/../descriptor/hudson.tasks.ArtifactArchiver/help/artifacts">
     <f:textbox checkUrl="'${rootURL}/publisher/ImageGalleryRecorder/checkMandatory?value='+escape(this.value)" />
   </f:entry>
-    <f:entry title="Image width" field="imageWidth" help="${rootURL}/../plugin/image-gallery/help-imageWidth.html">
+    <f:entry title="Image width" field="imageWidthText" help="${rootURL}/../plugin/image-gallery/help-imageWidth.html">
         <f:textbox />
     </f:entry>
-    <f:entry title="Image inner width" field="imageInnerWidth">
+    <f:entry title="Image inner width" field="imageInnerWidthText">
         <f:textbox />
     </f:entry>
     <f:advanced>

@@ -69,9 +69,9 @@ public abstract class ImageGallery implements Serializable, Describable<ImageGal
 		imageWidthText = Integer.toString(imageWidth);
 	}
 
-	public ImageGallery(String title, String imageWidth) {
+	public ImageGallery(String title, String imageWidthText) {
 	    this.title = title;
-	    this.imageWidthText = imageWidth;
+	    this.imageWidthText = imageWidthText;
 	}
 
 	/**

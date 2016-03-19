@@ -80,12 +80,12 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
      * Constructor with args.
      * @param title
      * @param images
-     * @param imageWidth
+     * @param imageWidthText
      */
-    public ArchivedImagesGalleryBuildAction(String title, String[] images, String imageWidth) {
+    public ArchivedImagesGalleryBuildAction(String title, String[] images, String imageWidthText) {
         this.title = title;
         this.images = images;
-        imageWidthText = imageWidth;
+        this.imageWidthText = imageWidthText;
     }
 	
 	/**

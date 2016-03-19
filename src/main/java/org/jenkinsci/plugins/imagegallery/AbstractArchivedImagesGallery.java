@@ -47,9 +47,9 @@ public abstract class AbstractArchivedImagesGallery extends ImageGallery {
 		this.markBuildAsUnstableIfNoArchivesFound = markBuildAsUnstableIfNoArchivesFound;
 	}
 	
-	public AbstractArchivedImagesGallery(String title, String imageWidth,
+	public AbstractArchivedImagesGallery(String title, String imageWidthText,
 	        Boolean markBuildAsUnstableIfNoArchivesFound) {
-	    super(title, imageWidth);
+	    super(title, imageWidthText);
 	    this.markBuildAsUnstableIfNoArchivesFound = markBuildAsUnstableIfNoArchivesFound;
 	}
 	

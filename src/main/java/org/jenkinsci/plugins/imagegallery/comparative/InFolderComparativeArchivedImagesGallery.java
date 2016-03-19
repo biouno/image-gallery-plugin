@@ -70,14 +70,14 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
      * 
      * @param title Title of the image gallery
      * @param baseRootFolder Root folder where the images will be retrieve from
-     * @param imageWidth thumbnail width of each images
-     * @param imageInnerWidth Width for the images in the popup display
+     * @param imageWidthText thumbnail width of each images
+     * @param imageInnerWidthText Width for the images in the popup display
      * @param markBuildAsUnstableIfNoArchivesFound Mark the build as unstable if no archives found
      */
     @DataBoundConstructor
-    public InFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidth, String imageInnerWidth,
+    public InFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, String imageWidthText, String imageInnerWidthText,
                                                     boolean markBuildAsUnstableIfNoArchivesFound) {
-        super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
+        super(title, baseRootFolder, imageWidthText, imageInnerWidthText, markBuildAsUnstableIfNoArchivesFound);
     }
 
 	@Extension

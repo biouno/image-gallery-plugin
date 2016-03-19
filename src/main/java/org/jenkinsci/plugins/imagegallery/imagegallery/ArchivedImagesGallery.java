@@ -78,13 +78,13 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 	/**
      * Constructor called from jelly.
      * @param includes
-     * @param imageWidth
+     * @param imageWidthText
      * @param markBuildAsUnstableIfNoArchivesFound
      */
     @DataBoundConstructor
-    public ArchivedImagesGallery(String title, String includes, String imageWidth,
+    public ArchivedImagesGallery(String title, String includes, String imageWidthText,
             Boolean markBuildAsUnstableIfNoArchivesFound) {
-        super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
+        super(title, imageWidthText, markBuildAsUnstableIfNoArchivesFound);
         this.includes = includes;
     }
 

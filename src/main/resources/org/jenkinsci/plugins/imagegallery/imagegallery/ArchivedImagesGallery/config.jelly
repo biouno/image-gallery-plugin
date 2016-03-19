@@ -7,7 +7,7 @@
     <f:textbox checkUrl="'${rootURL}/publisher/ImageGalleryRecorder/checkMandatory?value='+escape(this.value)" />
   </f:entry>
   <f:advanced>
-    <f:entry title="Image width" field="imageWidth" help="${rootURL}/../plugin/image-gallery/help-imageWidth.html">
+    <f:entry title="Image width" field="imageWidthText" help="${rootURL}/../plugin/image-gallery/help-imageWidth.html">
       <f:textbox />
     </f:entry>
     <f:entry title="${%Mark build as unstable if no archived artifacts were found}" help="${rootURL}/../plugin/image-gallery/help-markBuildAsUnstableIfNoArchivesFound.html">
