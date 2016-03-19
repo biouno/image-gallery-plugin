@@ -27,8 +27,6 @@ import hudson.model.Action;
 
 import java.io.Serializable;
 
-import org.codehaus.plexus.util.StringUtils;
-
 /**
  * A project action with a group of image files associated by a path and a set of files
  *
@@ -100,7 +98,7 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
         this.title = title;
         this.tree = tree;
         this.imageInnerWidthText = imageInnerWidthText;
-        if(StringUtils.isNotBlank(imageWidthText)) {
+        if(imageWidthText != null) {
             this.imageWidthText = imageWidthText;
         } else {
             this.imageWidthText = "";
