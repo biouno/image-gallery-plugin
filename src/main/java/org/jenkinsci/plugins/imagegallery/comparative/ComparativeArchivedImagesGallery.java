@@ -23,6 +23,8 @@
  */
 package org.jenkinsci.plugins.imagegallery.comparative;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -141,16 +143,30 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 
 	}
 
-	protected List<String> getRelativeFrom(FilePath file, FilePath parent) {
-		List<String> path = new ArrayList<String>();
-		FilePath temp = file;
-		while(temp.getParent() != null && !temp.getParent().equals(parent)) {
-			path.add(0,temp.getParent().getName());
-			temp = temp.getParent();
-		}
-		path.add(file.getName());
-		return path;
-	}
-	
-	
+    /**
+     * <p>Retrieve an array with the directories required to go from parent to file. Like in a network where you can
+     * trace for hops.</p>
+     *
+     * <p>For example, from /home/silb/archives to /home/silb/archives/images/1.png, the method will return an array
+     * with images and 1.png.</p>
+     * @param file target file
+     * @param parent parent file
+     * @return an array with directories to go from {@code parent} to {@code file}.
+     */
+    protected List<String> getRelativeFrom(FilePath file, FilePath parent) {
+        String fileRemote = file.getRemote();
+        String parentRemote = parent.getRemote();
+        Path filePath = Paths.get(fileRemote);
+        Path parentPath = Paths.get(parentRemote);
+        Path relativePath = parentPath.relativize(filePath);
+        String[] paths = relativePath.toString().split("/");
+        List<String> list = new ArrayList<String>();
+        list.add("/");
+        for (String path : paths) {
+            if (!path.trim().equals("")) {
+                list.add(path);
+            }
+        }
+        return list;
+    }
 }

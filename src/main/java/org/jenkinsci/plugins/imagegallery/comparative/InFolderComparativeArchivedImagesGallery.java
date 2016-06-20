@@ -23,19 +23,22 @@
  */
 package org.jenkinsci.plugins.imagegallery.comparative;
 
-import hudson.Extension;
-import hudson.FilePath;
-import hudson.Util;
-import hudson.model.BuildListener;
-import hudson.model.Result;
-import hudson.model.AbstractBuild;
-
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
+
+import hudson.AbortException;
+import hudson.Extension;
+import hudson.FilePath;
+import hudson.Util;
+import hudson.model.AbstractBuild;
+import hudson.model.BuildListener;
+import hudson.model.Result;
 
 /**
  * An image gallery of archived artifacts Comparing same files in different folders.
@@ -48,7 +51,7 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
 	/*
      * serial version UID.
      */
-    private static final long serialVersionUID = 5537875107916417554L;
+    private static final long serialVersionUID = 5537875107916417555L;
 
     /**
 	 * Constructor called from jelly.
@@ -93,15 +96,22 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
 	public boolean createImageGallery(AbstractBuild<?, ?> build, BuildListener listener) throws InterruptedException, IOException {
 		listener.getLogger().append("Creating archived images gallery.");
 		if (build.getHasArtifacts()) {
-			File artifactsDir = build.getArtifactsDir().getAbsoluteFile();
-			FilePath artifactsPath = new FilePath(new File(artifactsDir.getAbsoluteFile(), getBaseRootFolder()));
+            File artifactsRootDir = build.getArtifactsDir().getAbsoluteFile();
+            File artifactsDir = new File(artifactsRootDir, getBaseRootFolder());
+
+            // abort build if the gallery is using a file outside of the project artifacts directory
+            if (!isChild(artifactsRootDir, artifactsDir)) {
+                throw new AbortException("Invalid base root folder: " + getBaseRootFolder());
+            }
+
+            FilePath artifactsPath = new FilePath(artifactsDir);
             FilePath[] files = artifactsPath.list("**");
 
             if (files != null && files.length > 0) {
             	FilePairTree tree = new FilePairTree();
                 for (FilePath path : files) {
                         List<String> folder = getRelativeFrom(path.getParent(), artifactsPath);
-                        List<String> artifactsRelativeFile = getRelativeFrom(path, artifactsPath.getParent());
+                        List<String> artifactsRelativeFile = getRelativeFrom(path, artifactsPath);
                         tree.addToBranch(folder, new FilePair(path.getName(), StringUtils.join(artifactsRelativeFile, '/')));
                 }
                 String title = Util.replaceMacro(build.getEnvironment(listener).expand(getTitle()), build.getBuildVariableResolver());
@@ -118,7 +128,22 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
 		return true;
 	}
 
-	public Object readResolve() {
+    /**
+     * Verify that the {@code child} file is a child node of the {@code parent} directory tree. File names are
+     * normalised before the comparison (i.e. ../ and ./ are evaluated). Uses Java 8 {@link java.nio.file.Path}
+     * methods.
+     *
+     * @param parent parent file
+     * @param child child file
+     * @return {@code true} iff child is child directory of parent directory tree
+     */
+    private boolean isChild(File parent, File child) {
+        Path parentPath = Paths.get(parent.getAbsolutePath()).normalize().toAbsolutePath();
+        Path childPath = Paths.get(child.getAbsolutePath()).normalize().toAbsolutePath();
+        return childPath.startsWith(parentPath);
+    }
+
+    public Object readResolve() {
 	    Integer imageWidth = getImageWidth();
 	    String width = getImageWidthText();
 	    if (imageWidth != null && imageWidth > 0) {
