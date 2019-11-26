@@ -23,7 +23,6 @@
  */
 package org.jenkinsci.plugins.imagegallery.comparative;
 
-
 /**
  * File association group for a path and a set of files
  * 
@@ -39,11 +38,11 @@ public class FilePair implements Comparable<FilePair> {
 		baseRoot = folder;
 		this.name = name;
 	}
-	
+
 	public String getBaseRoot() {
 		return baseRoot;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -51,9 +50,9 @@ public class FilePair implements Comparable<FilePair> {
 	public int compareTo(FilePair o) {
 		return baseRoot.compareTo(o.baseRoot);
 	}
-	
+
 	public String toString() {
 		return baseRoot + ":" + name;
 	}
-	
+
 }
