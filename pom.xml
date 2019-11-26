@@ -47,8 +47,8 @@
         <url>http://github.com/jenkinsci/image-gallery-plugin</url>
         <connection>scm:git:git://github.com/jenkinsci/image-gallery-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/image-gallery-plugin.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <licenses>
         <license>
@@ -58,9 +58,6 @@
         </license>
     </licenses>
 
-    <!-- get every artifact through repo.jenkins-ci.org, which proxies all the
-
-        artifacts that we need -->
     <repositories>
         <repository>
             <id>repo.jenkins-ci.org</id>
