@@ -100,7 +100,7 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 			FilePath artifactsPath = new FilePath(new File(artifactsDir.getAbsoluteFile(), getBaseRootFolder()));
 			List<FilePath> baseFolders = artifactsPath.list();
   			if(LOGGER.isLoggable(Level.FINE)) {
-				LOGGER.log(Level.FINE, "Found " + (baseFolders != null ? baseFolders.size() : 0) + " files.");
+				LOGGER.log(Level.FINE, "Found " + (baseFolders.size()) + " files.");
 			}
 			if(baseFolders != null && baseFolders.size() > 0) {
 				FilePairTree tree = new FilePairTree();
