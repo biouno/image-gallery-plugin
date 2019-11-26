@@ -40,14 +40,12 @@ public class FilePairTree implements Serializable {
 
     private Map<String, FilePairTree> nodes = new TreeMap<String, FilePairTree>();
 
-
     @SuppressWarnings("unchecked")
     private Set<FilePair> leafs = new TreeSet<>(
         (Comparator<FilePair> & Serializable) (o1, o2) -> {
             return o1.getName().compareTo(o2.getName());
         }
     );
-
 
     public void addToBranch(List<String> branch, FilePair leaf) {
         if (branch == null) {
@@ -70,10 +68,8 @@ public class FilePairTree implements Serializable {
         return nodes;
     }
 
-
     public Set<FilePair> getLeafs() {
         return leafs;
     }
-
 
 }
