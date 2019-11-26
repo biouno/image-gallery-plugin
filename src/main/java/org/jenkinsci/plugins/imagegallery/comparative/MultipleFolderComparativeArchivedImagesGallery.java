@@ -53,21 +53,6 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
     private static final long serialVersionUID = -4861153536599621098L;
 
     private static Logger LOGGER = Logger.getLogger(MultipleFolderComparativeArchivedImagesGallery.class.getName());
-	
-	/**
-	 * Constructor called from jelly.
-	 * @param title gallery title
-	 * @param baseRootFolder base root folder
-	 * @param imageWidth image width
-	 * @param imageInnerWidth image inner width
-	 * @param markBuildAsUnstableIfNoArchivesFound flag to mark build as unstable if nothing found
-	 */
-	@Deprecated
-	public MultipleFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
-			boolean markBuildAsUnstableIfNoArchivesFound) {
-		super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
-	}
-	
 	/**
      * Constructor called from jelly.
      * @param title gallery title
@@ -124,24 +109,5 @@ public class MultipleFolderComparativeArchivedImagesGallery extends ComparativeA
 			listener.getLogger().append("This build has no artifacts. Skipping image gallery in this build.");
 		}
 		return true;
-	}
-
-	public Object readResolve() {
-	    Integer imageWidth = getImageWidth();
-        String width = getImageWidthText();
-        if (imageWidth != null && imageWidth > 0) {
-            width = Integer.toString(imageWidth);
-        }
-        Integer imageInnerWidth = getImageInnerWidth();
-        String innerWidth = getImageInnerWidthText();
-        if (imageInnerWidth != null && imageInnerWidth > 0) {
-            innerWidth = Integer.toString(imageInnerWidth);
-        }
-        return new MultipleFolderComparativeArchivedImagesGallery(
-                getTitle(),
-                getBaseRootFolder(),
-                width,
-                innerWidth,
-                isMarkBuildAsUnstableIfNoArchivesFound());
 	}
 }

@@ -53,21 +53,6 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
      */
     private static final long serialVersionUID = 5537875107916417555L;
 
-    /**
-	 * Constructor called from jelly.
-	 * 
-	 * @param title Title of the image gallery
-	 * @param baseRootFolder Root folder where the images will be retrieve from
-	 * @param imageWidth thumbnail width of each images
-	 * @param imageInnerWidth Width for the images in the popup display
-	 * @param markBuildAsUnstableIfNoArchivesFound Mark the build as unstable if no archives found
-	 */
-	@Deprecated
-	public InFolderComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
-                                                    boolean markBuildAsUnstableIfNoArchivesFound) {
-		super(title, baseRootFolder, imageWidth, imageInnerWidth, markBuildAsUnstableIfNoArchivesFound);
-	}
-
 	 /**
      * Constructor called from jelly.
      * 
@@ -142,24 +127,5 @@ public class InFolderComparativeArchivedImagesGallery extends ComparativeArchive
         Path childPath = Paths.get(child.getAbsolutePath()).normalize().toAbsolutePath();
         return childPath.startsWith(parentPath);
     }
-
-    public Object readResolve() {
-	    Integer imageWidth = getImageWidth();
-	    String width = getImageWidthText();
-	    if (imageWidth != null && imageWidth > 0) {
-	        width = Integer.toString(imageWidth);
-	    }
-	    Integer imageInnerWidth = getImageInnerWidth();
-	    String innerWidth = getImageInnerWidthText();
-        if (imageInnerWidth != null && imageInnerWidth > 0) {
-            innerWidth = Integer.toString(imageInnerWidth);
-        }
-        return new InFolderComparativeArchivedImagesGallery(
-                getTitle(),
-                getBaseRootFolder(),
-                width,
-                innerWidth,
-                isMarkBuildAsUnstableIfNoArchivesFound());
-	}
 
 }

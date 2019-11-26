@@ -60,35 +60,11 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 	 * Include pattern.
 	 */
 	private final String baseRootFolder;
-	
-	/**
-     * Images width.
-     */
-	@Deprecated
-    private Integer imageInnerWidth;
 
 	/**
 	 * Images inner width.
 	 */
 	private final String imageInnerWidthText;
-
-	/**
-	 * Constructor called from jelly.
-	 * @param title gallery title
-	 * @param baseRootFolder base root folder
-	 * @param imageWidth width
-	 * @param imageInnerWidth inner width
-	 * @param markBuildAsUnstableIfNoArchivesFound flag to fail build if nothing found
-	 */
-	@Deprecated
-	public ComparativeArchivedImagesGallery(String title, String baseRootFolder, Integer imageWidth, Integer imageInnerWidth,
-                                                    boolean markBuildAsUnstableIfNoArchivesFound) {
-		super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
-		this.title = title;
-		this.baseRootFolder = baseRootFolder;
-        this.imageInnerWidth = imageInnerWidth;
-        imageInnerWidthText = Integer.toString(imageInnerWidth);
-	}
 
 	/**
      * Constructor called from jelly.
@@ -119,14 +95,6 @@ public abstract class ComparativeArchivedImagesGallery extends AbstractArchivedI
 	public String getBaseRootFolder() {
 		return baseRootFolder;
 	}
-
-    /**
-     * @return the imageInnerWidth
-     */
-	@Deprecated
-    public Integer getImageInnerWidth() {
-        return imageInnerWidth;
-    }
 
 	/**
 	 * @return the imageInnerWidthText

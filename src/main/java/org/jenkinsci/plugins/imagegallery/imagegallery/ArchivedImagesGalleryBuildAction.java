@@ -52,31 +52,7 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	/**
 	 * The image width.
 	 */
-	@Deprecated
-	private Integer imageWidth;
-	/**
-	 * The image width.
-	 */
 	private final String imageWidthText;
-	
-	/**
-	 * Constructor with args.
-	 * @param title gallery title
-	 * @param images gallery images
-	 * @param imageWidth image width
-	 */
-	@Deprecated
-	@SuppressFBWarnings("EI_EXPOSE_REP2")
-	public ArchivedImagesGalleryBuildAction(String title, String[] images, Integer imageWidth) {
-		this.title = title;
-		this.images = images;
-		if(imageWidth != null) {
-			this.imageWidth = imageWidth;
-		} else {
-			this.imageWidth = Integer.valueOf(0);
-		}
-		imageWidthText = Integer.toString(this.imageWidth);
-	}
 
 	/**
      * Constructor with args.
@@ -127,25 +103,8 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 		return "buildImageGallery";
 	}
 
-	/**
-	 * @return the imageWidth
-	 */
-	@Deprecated
-	public int getImageWidth() {
-		return imageWidth;
-	}
-
 	public String getImageWidthText() {
 	    return imageWidthText;
 	}
-
-    public Object readResolve() {
-		String width = (imageWidth != null && imageWidth > 0) ? Integer.toString(imageWidth) : imageWidthText;
-
-        return new ArchivedImagesGalleryBuildAction(
-                title,
-                images,
-                width /*imageWidthText*/);
-    }
 
 }

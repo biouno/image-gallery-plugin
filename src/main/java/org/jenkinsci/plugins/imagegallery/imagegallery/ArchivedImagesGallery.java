@@ -63,20 +63,6 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 	private final String includes;
 
 	/**
-	 * Constructor called from jelly.
-	 * @param title gallery title
-	 * @param includes ant-pattern to include files
-	 * @param imageWidth image width
-	 * @param markBuildAsUnstableIfNoArchivesFound flag to mark build as unstable if nothing found
-	 */
-	@Deprecated
-	public ArchivedImagesGallery(String title, String includes, Integer imageWidth,
-			Boolean markBuildAsUnstableIfNoArchivesFound) {
-		super(title, imageWidth, markBuildAsUnstableIfNoArchivesFound);
-		this.includes = includes;
-	}
-
-	/**
      * Constructor called from jelly.
      * @param title gallery title
      * @param includes ant-pattern to include files
@@ -149,18 +135,6 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 			listener.getLogger().append("This build has no artifacts. Skipping image gallery in this build.");
 		}
 		return true;
-	}
-
-	public Object readResolve() {
-	    Integer imageWidth = getImageWidth();
-	    String width = getImageWidthText();
-	    if (imageWidth != null && imageWidth > 0) {
-	        width = Integer.toString(imageWidth);
-	    }
-	    return new ArchivedImagesGallery(getTitle(),
-	            getIncludes(),
-	            width,
-	            isMarkBuildAsUnstableIfNoArchivesFound());
 	}
 
 }

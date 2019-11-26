@@ -50,41 +50,11 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	/**
 	 * The image width.
 	 */
-	@Deprecated
-	private Integer imageWidth;
-	/**
-	 * The image width.
-	 */
 	private final String imageWidthText;
-    /**
-     * The inner image width
-     */
-	@Deprecated
-    private Integer imageInnerWidth;
 	/**
 	 * The image inner width.
 	 */
 	private final String imageInnerWidthText;
-	/**
-	 * Constructor with args.
-	 * @param title gallery title
-	 * @param tree file pair tree 
-	 * @param imageWidth image width
-	 * @param imageInnerWidth image inner width
-	 */
-	@Deprecated
-	public ComparativeImagesGalleryBuildAction(String title, FilePairTree tree, Integer imageWidth, Integer imageInnerWidth) {
-		this.title = title;
-		this.tree = tree;
-        this.imageInnerWidth = imageInnerWidth;
-        imageWidthText = Integer.toString(imageInnerWidth);
-		if(imageWidth != null) {
-			this.imageWidth = imageWidth;
-		} else {
-		    this.imageWidth = Integer.valueOf(0);
-		}
-		imageInnerWidthText = Integer.toString(this.imageWidth);
-	}
 
 	/**
      * Constructor with args.
@@ -140,44 +110,17 @@ public class ComparativeImagesGalleryBuildAction implements Action, Serializable
 	}
 
 	/**
-	 * @return the imageWidth
-	 */
-	@Deprecated
-	public Integer getImageWidth() {
-		return imageWidth;
-	}
-
-	/**
 	 * @return the imageWidthText
 	 */
 	public String getImageWidthText() {
         return imageWidthText;
     }
 
-    /**
-     * @return the imageInnerWidth
-     */
-	@Deprecated
-    public Integer getImageInnerWidth() {
-        return imageInnerWidth;
-    }
 	/**
 	 * @return the imageInnerWidthText
 	 */
 	public String getImageInnerWidthText() {
         return imageInnerWidthText;
     }
-
-	public Object readResolve() {
-	    String width = 
-	            (imageWidth != null && imageWidth > 0) ? Integer.toString(imageWidth) : "";
-        String innerWidth = 
-                (imageInnerWidth != null && imageInnerWidth > 0) ? Integer.toString(imageInnerWidth) : "0";
-	    return new ComparativeImagesGalleryBuildAction(
-	            title,
-	            tree,
-	            width /*imageWidthText*/,
-	            innerWidth /*imageInnerWidthText*/);
-	}
 
 }

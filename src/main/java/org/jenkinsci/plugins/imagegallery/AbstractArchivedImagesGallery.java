@@ -39,14 +39,7 @@ public abstract class AbstractArchivedImagesGallery extends ImageGallery {
 	 * If checked, marks the build as unstable if no archives were found.
 	 */
 	private final boolean markBuildAsUnstableIfNoArchivesFound;
-	
-	@Deprecated
-	public AbstractArchivedImagesGallery(String title, Integer imageWidth, 
-			Boolean markBuildAsUnstableIfNoArchivesFound) {
-		super(title, imageWidth);
-		this.markBuildAsUnstableIfNoArchivesFound = markBuildAsUnstableIfNoArchivesFound;
-	}
-	
+
 	public AbstractArchivedImagesGallery(String title, String imageWidthText,
 	        Boolean markBuildAsUnstableIfNoArchivesFound) {
 	    super(title, imageWidthText);

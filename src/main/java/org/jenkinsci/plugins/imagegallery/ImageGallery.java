@@ -54,20 +54,8 @@ public abstract class ImageGallery implements Serializable, Describable<ImageGal
 	 * Title.
 	 */
 	private final String title;
-	/**
-	 * Images width.
-	 */
-	@Deprecated
-	private Integer imageWidth;
-	
+
 	private final String imageWidthText;
-	
-	@Deprecated
-	public ImageGallery(String title, Integer imageWidth) {
-		this.title = title;
-		this.imageWidth = imageWidth;
-		imageWidthText = Integer.toString(imageWidth);
-	}
 
 	public ImageGallery(String title, String imageWidthText) {
 	    this.title = title;
@@ -79,14 +67,6 @@ public abstract class ImageGallery implements Serializable, Describable<ImageGal
 	 */
 	public String getTitle() {
 		return title;
-	}
-	
-	/**
-	 * @return the imageWidth
-	 */
-	@Deprecated
-	public Integer getImageWidth() {
-		return imageWidth;
 	}
 
 	/**
