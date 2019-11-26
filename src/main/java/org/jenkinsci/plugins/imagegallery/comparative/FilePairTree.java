@@ -40,11 +40,12 @@ public class FilePairTree implements Serializable {
 
     private Map<String, FilePairTree> nodes = new TreeMap<String, FilePairTree>();
 	
-	private Set<FilePair> leafs = new TreeSet<FilePair>(new Comparator<FilePair>() {
-		public int compare(FilePair o1, FilePair o2) {
+	@SuppressWarnings("unchecked")
+    private Set<FilePair> leafs = new TreeSet<>(
+	    (Comparator<FilePair> & Serializable) (o1, o2) -> {
 			return o1.getName().compareTo(o2.getName());
 		}
-	});
+	);
 	
 	public void addToBranch(List<String> branch, FilePair leaf) {
 		if (branch == null) {

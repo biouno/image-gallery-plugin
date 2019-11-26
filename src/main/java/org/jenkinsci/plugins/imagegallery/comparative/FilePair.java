@@ -23,15 +23,18 @@
  */
 package org.jenkinsci.plugins.imagegallery.comparative;
 
+import java.io.Serializable;
+
 /**
  * File association group for a path and a set of files
  * 
  * @author Richard Lavoie
  * @since 1.0
  */
-public class FilePair implements Comparable<FilePair> {
+public class FilePair implements Comparable<FilePair>, Serializable {
 
-	private String baseRoot;
+    private static final long serialVersionUID = 1L;
+    private String baseRoot;
 	private String name;
 
 	public FilePair(String folder, String name) {
