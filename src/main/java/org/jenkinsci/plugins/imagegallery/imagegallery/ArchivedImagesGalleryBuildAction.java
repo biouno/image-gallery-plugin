@@ -25,6 +25,7 @@ package org.jenkinsci.plugins.imagegallery.imagegallery;
 
 import java.io.Serializable;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hudson.model.Action;
 
 /**
@@ -65,6 +66,7 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	 * @param imageWidth image width
 	 */
 	@Deprecated
+	@SuppressFBWarnings("EI_EXPOSE_REP2")
 	public ArchivedImagesGalleryBuildAction(String title, String[] images, Integer imageWidth) {
 		this.title = title;
 		this.images = images;
@@ -82,6 +84,7 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
      * @param images gallery images
      * @param imageWidthText image width
      */
+	@SuppressFBWarnings("EI_EXPOSE_REP2")
     public ArchivedImagesGalleryBuildAction(String title, String[] images, String imageWidthText) {
         this.title = title;
         this.images = images;
@@ -98,6 +101,7 @@ public class ArchivedImagesGalleryBuildAction implements Action, Serializable {
 	/**
 	 * @return the images
 	 */
+	@SuppressFBWarnings("EI_EXPOSE_REP")
 	public String[] getImages() {
 		return images;
 	}
