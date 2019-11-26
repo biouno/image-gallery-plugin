@@ -120,7 +120,7 @@ public class ArchivedImagesGallery extends AbstractArchivedImagesGallery {
 			final String includes = Util.replaceMacro(build.getEnvironment(listener).expand(getIncludes()), build.getBuildVariableResolver());
 			FilePath[] foundFiles = artifactsPath.list(includes);
 			if(LOGGER.isLoggable(Level.FINE)) {
-				LOGGER.log(Level.FINE, "Found " + (foundFiles != null ? foundFiles.length : 0) + " files.");
+				LOGGER.log(Level.FINE, "Found " + foundFiles.length + " files.");
 			}
 			if(foundFiles != null && foundFiles.length > 0) {
 				List<String> images = new ArrayList<String>();
