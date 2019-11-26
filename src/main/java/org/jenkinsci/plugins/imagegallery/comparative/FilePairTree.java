@@ -39,37 +39,37 @@ public class FilePairTree implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Map<String, FilePairTree> nodes = new TreeMap<String, FilePairTree>();
-	
-	@SuppressWarnings("unchecked")
+    
+    @SuppressWarnings("unchecked")
     private Set<FilePair> leafs = new TreeSet<>(
-	    (Comparator<FilePair> & Serializable) (o1, o2) -> {
-			return o1.getName().compareTo(o2.getName());
-		}
-	);
-	
-	public void addToBranch(List<String> branch, FilePair leaf) {
-		if (branch == null) {
-			return;
-		}
-		if (branch.size() == 0) {
-			leafs.add(leaf);
-		} else {
-			String branchRoot = branch.remove(0);
-			FilePairTree subs = nodes.get(branchRoot);
-	        if (subs == null) {
-	            subs = new FilePairTree();
-	            nodes.put(branchRoot, subs);
-	        }
+        (Comparator<FilePair> & Serializable) (o1, o2) -> {
+            return o1.getName().compareTo(o2.getName());
+        }
+    );
+    
+    public void addToBranch(List<String> branch, FilePair leaf) {
+        if (branch == null) {
+            return;
+        }
+        if (branch.size() == 0) {
+            leafs.add(leaf);
+        } else {
+            String branchRoot = branch.remove(0);
+            FilePairTree subs = nodes.get(branchRoot);
+            if (subs == null) {
+                subs = new FilePairTree();
+                nodes.put(branchRoot, subs);
+            }
             subs.addToBranch(branch, leaf);
-		}
-	}
+        }
+    }
 
-	public Map<String, FilePairTree> getNodes() {
-		return nodes;
-	}
-	
-	public Set<FilePair> getLeafs() {
-		return leafs;
-	}
-	
+    public Map<String, FilePairTree> getNodes() {
+        return nodes;
+    }
+    
+    public Set<FilePair> getLeafs() {
+        return leafs;
+    }
+    
 }
