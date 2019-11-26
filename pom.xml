@@ -3,7 +3,8 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.580.3</version><!-- which version of Jenkins is this plugin 
+        <version>1.580.3</version><!-- which version of Jenkins is this plugin
+
             built against? -->
     </parent>
 
@@ -57,7 +58,8 @@
         </license>
     </licenses>
 
-    <!-- get every artifact through repo.jenkins-ci.org, which proxies all the 
+    <!-- get every artifact through repo.jenkins-ci.org, which proxies all the
+
         artifacts that we need -->
     <repositories>
         <repository>
