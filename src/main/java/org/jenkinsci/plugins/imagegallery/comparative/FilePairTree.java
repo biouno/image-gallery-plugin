@@ -23,6 +23,7 @@
  */
 package org.jenkinsci.plugins.imagegallery.comparative;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -34,8 +35,10 @@ import java.util.TreeSet;
  * @author Richard Lavoie
  * @since 1.0
  */
-public class FilePairTree {
-	private Map<String, FilePairTree> nodes = new TreeMap<String, FilePairTree>();
+public class FilePairTree implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private Map<String, FilePairTree> nodes = new TreeMap<String, FilePairTree>();
 	
 	private Set<FilePair> leafs = new TreeSet<FilePair>(new Comparator<FilePair>() {
 		public int compare(FilePair o1, FilePair o2) {
