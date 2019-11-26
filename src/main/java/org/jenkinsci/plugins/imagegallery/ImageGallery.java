@@ -87,15 +87,15 @@ public abstract class ImageGallery implements Serializable, Describable<ImageGal
 	 * @see hudson.model.Describable#getDescriptor()
 	 */
 	public Descriptor<ImageGallery> getDescriptor() {
-		return (ImageGalleryDescriptor) Jenkins.getInstance().getDescriptor(getClass());
+		return (ImageGalleryDescriptor) Jenkins.get().getDescriptor(getClass());
 	}
 	
 	public static DescriptorExtensionList<ImageGallery, Descriptor<ImageGallery>> all() {
-		return Jenkins.getInstance().<ImageGallery, Descriptor<ImageGallery>> getDescriptorList(ImageGallery.class);
+		return Jenkins.get().<ImageGallery, Descriptor<ImageGallery>> getDescriptorList(ImageGallery.class);
 	}
 
 	public static DescriptorExtensionList<ImageGallery, Descriptor<ImageGallery>> allExcept(Node current) {
-		return Jenkins.getInstance().<ImageGallery, Descriptor<ImageGallery>> getDescriptorList(ImageGallery.class);
+		return Jenkins.get().<ImageGallery, Descriptor<ImageGallery>> getDescriptorList(ImageGallery.class);
 	}
 	
 	public Collection<? extends Action> getProjectActions(AbstractProject<?, ?> project) {
