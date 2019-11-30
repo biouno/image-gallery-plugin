@@ -87,6 +87,18 @@ You can use the arrow keys of your keyboard to navigate in your gallery.
 
 ## Change Log
 
+### Release 2.0 (30/Nov/2019)
+
+This release was in the experimental update center one week before the final release.
+
+- [Upgrade colorbox to 1.6.4 (was v1.3.19.3)](https://github.com/jenkinsci/image-gallery-plugin/pull/2)
+- Upgraded minimum Jenkins requirement
+- Fix FindBugs issues due to new requirements from Jenkins parent
+- Replaced tabs by spaces in some files
+- Fix Jelly security issues due to new requirements from Jenkins parent
+- Removed 1.x deprecated code
+- Fix Jenkins.getInstance() deprecated call, use Jenkins.get()
+
 ### Release 1.4 (21/Jun/2016)
 
 - [SECURITY-278: image-gallery: Information
