@@ -87,17 +87,17 @@ You can use the arrow keys of your keyboard to navigate in your gallery.
 
 ## Change Log
 
-##### Release 1.4 (21/Jun/2016)
+### Release 1.4 (21/Jun/2016)
 
 - [SECURITY-278: image-gallery: Information
   disclosure](https://issues.jenkins-ci.org/browse/SECURITY-278)
 
-##### Release 1.3 (19/Mar/2016)
+### Release 1.3 (19/Mar/2016)
 
 - JENKINS-32447: BUILD\_NUMBER in include pattern
 - JENKINS-31364: Image width is set to "0" in previous builds
 
-##### Release 1.2 (16/Sep/2015)
+### Release 1.2 (16/Sep/2015)
 
 - JENKINS-23772: Percent for image width attribute
 - JENKINS-22888: Colorbox viewer does not appear to work
@@ -106,16 +106,16 @@ You can use the arrow keys of your keyboard to navigate in your gallery.
 - JENKINS-22625: Allow customization of gallery title with
   Build/Project Parameters
 
-##### Release 1.1 (17/Apr/2014)
+### Release 1.1 (17/Apr/2014)
 
 - JENKINS-22625: Allow customization of gallery title with
   Build/Project Parameters
 
-##### Release 1.0 (21/Sep/2012)
+### Release 1.0 (21/Sep/2012)
 
 - Two more types of galleries contributed by Richard Lavoie (darkrift)
 
-##### Release 0.1 (07/Aug/2012)
+### Release 0.1 (07/Aug/2012)
 
 - Initial release, with only one image-gallery type supported
   (Archived Images Gallery).
