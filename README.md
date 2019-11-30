@@ -87,6 +87,10 @@ You can use the arrow keys of your keyboard to navigate in your gallery.
 
 ## Change Log
 
+### Release 2.0.1 (1/Dec/2019)
+
+- Migrated docs from Confluence to GitHub
+
 ### Release 2.0 (30/Nov/2019)
 
 This release was in the experimental update center one week before the final release.
