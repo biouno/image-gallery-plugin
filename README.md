@@ -1,3 +1,7 @@
+[![Jenkins Plugin](https://img.shields.io/jenkins/plugin/v/image-gallery.svg)](https://plugins.jenkins.io/image-gallery)
+[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/image-gallery.svg?color=blue)](https://plugins.jenkins.io/image-gallery)
+
+
 This plug-in reads a job workspace and collects images to produce an
 image gallery using
 [colorbox](http://www.jacklmoore.com/colorbox) lightbox
