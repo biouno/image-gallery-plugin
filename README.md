@@ -91,6 +91,11 @@ You can use the arrow keys of your keyboard to navigate in your gallery.
 
 - Migrated docs from Confluence to GitHub
 
+### Release 2.0.2 (1/Dec/2019)
+
+- Update pom.xml URL for docs
+- Add README badges
+
 ### Release 2.0 (30/Nov/2019)
 
 This release was in the experimental update center one week before the final release.
